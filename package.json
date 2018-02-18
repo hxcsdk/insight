@@ -43,7 +43,7 @@
     "start": "INSIGHT_FORCE_RPC_SYNC=1 INSIGHT_PUBLIC_PATH=public node node_modules/.bin/insight-bitcore-api"
   },
   "dependencies": {
-    "insight-bitcore-api": "decred/insight-api",
+    "insight-bitcore-api": "hybridnetwork/insight-api",
     "wide-align": "1.1.0"
   },
   "devDependencies": {
