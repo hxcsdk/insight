@@ -142,7 +142,7 @@ margin-left: 0;
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {background-color: #333333;}
 
 .navbar-default {
-  background-color: #5a6d81;
+  background-color: #000000;
   margin: 0;
   border: 0;
 }
@@ -268,7 +268,7 @@ margin-left: 0;
   width: 100%;
 }
 .input-group-addon {
-  background-color: #fff;
+  background-color: #181818;
   width: 35px;
   padding: 0 5px;
   border-radius: 0;
@@ -303,15 +303,20 @@ margin-left: 0;
   margin-left: 5px;
 }
 
+#search {
+  background-color: #181818;
+  color: #ffffff;
+}
+
 #search::-webkit-input-placeholder {
-  color: #43a2ca;
+  color: #CECED2;
   font-family: 'Source Sans Pro', sans-serif;
   font-style: italic;
   font-weight: 100;
 }
 
 #search::-moz-placeholder {
-  color: #43a2ca;
+  color: #CECED2;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 100;
 }
