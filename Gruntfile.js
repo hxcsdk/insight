@@ -92,8 +92,8 @@ module.exports = function(grunt) {
         tasks: ['concat:main', 'uglify:main'],
       },
       css: {
-        files: ['public/src/css/**/*.css'],
-        tasks: ['concat:css', 'cssmin'],
+        files: ['public/src/scss/**/*.scss'],
+        tasks: ['sass', 'concat:css', 'cssmin'],
       },
     },
     nggettext_extract: {
