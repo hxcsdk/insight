@@ -36,11 +36,13 @@
               </span>
               <span class="glyphicon glyphicon-ok" tooltip="Historic sync finished" tooltip-placement="bottom" data-ng-show="sync.status==='finished'"> </span>
             </div>
-            &nbsp; &middot;
+            &nbsp; 
+            <!-- &middot; -->
             <span data-ng-init="getStatus('Info')">
-              <strong>{{'Conn'|translate}}</strong> {{info.connections}}
-            </span> &middot;
-            <strong>{{'Height'|translate}}</strong> {{totalBlocks || info.blocks}}
+              {{info.connections}} <strong>{{'Connections'|translate}}</strong> 
+            </span> 
+            <!-- &middot; -->
+            <!-- <strong>{{'Height'|translate}}</strong> {{totalBlocks || info.blocks}} -->
           </div>
         </li>
         <!--

@@ -5,10 +5,10 @@
 <section data-ng-controller="IndexController" data-ng-init="index()">
   <div class="container">
     <div id="home" class="row">
-      <div class="layout col-xs-15 col-md-7">
+      <div class="layout col-xs-15 col-md-12 m-container">
         <div id="search-form-mobile" class="visible-xs" data-ng-include src="'/views/includes/search.html'"></div>
         <h1 translate>Latest Blocks</h1>
-        <table class="table table-hover table-striped" style="table-layout: fixed">
+        <table class="table table-hover" style="table-layout: fixed">
           <thead>
             <tr>
               <th translate>Height</th>
@@ -34,8 +34,11 @@
           </tbody>
         </table>
         <div class="btn-more">
-          <a href="/blocks" class="btn btn-default" translate>See all blocks</a>
-        </div>
+          <a href="/blocks" translate>See all blocks</a>
+        </div>  
+      </div>
+
+      <div class="layout col-xs-15 col-md-12 m-container">
         <h2 translate>Latest Transactions</h2>
         <table class="table table-hover table-striped" style="table-layout: fixed;">
           <thead>
@@ -55,7 +58,7 @@
           </tbody>
         </table>
       </div>
-      <div class="layout col-xs-15 col-md-4 col-md-offset-1">
+      <!-- <div class="layout col-xs-15 col-md-4 col-md-offset-1">
         <h2 translate>About</h2>
         <p translate><strong>Powered by insight</strong>, an <a href="https://insight.is/"
           target="_blank">open-source blockchain explorer</a>. with complete REST and websocket APIs that can be used for writing web wallets and other apps  that need more advanced blockchain queries than provided by dcrd RPC.  Check out the <a href="http://github.com/decred/insight" target="_blank">source code</a>.</p>
@@ -69,7 +72,8 @@
           <a href="https://code.google.com/p/leveldb/" target="_blank" class="leveldb" title="LevelDB"></a>
           <a href="http://nodejs.org" target="_blank" class="nodejs" title="NodeJs"></a>
         </div>
-      </div> <!-- END OF COL-3 -->
+      </div>  -->
+      <!-- END OF COL-3 -->
     </div>
   </div>
 </section>
