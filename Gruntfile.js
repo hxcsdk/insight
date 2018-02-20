@@ -10,6 +10,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-markdown');
   grunt.loadNpmTasks('grunt-macreload');
   grunt.loadNpmTasks('grunt-angular-gettext');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Project Configuration
   grunt.initConfig({
@@ -110,7 +112,25 @@ module.exports = function(grunt) {
           'public/src/js/translations.js': ['po/*.po']
         }
       },
-    }
+    },
+    sass: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'public/src/scss',
+          src: ['*.scss'],
+          dest: 'public/src/css',
+          ext: '.css'
+        }]
+      }
+    },
+    clean: [
+      'public/src/css', 
+      'public/css/main.css', 
+      'public/js/main.js', 
+      'public/js/vendors.js',
+      'public/js/angularjs-all.js'
+    ]
   });
 
   //Making grunt default to force in order not to break the project.
@@ -123,7 +143,6 @@ module.exports = function(grunt) {
   grunt.registerTask('translate', ['nggettext_extract']);
 
   //Compile task (concat + minify)
-  grunt.registerTask('compile', ['nggettext_compile', 'concat', 'uglify', 'cssmin']);
-
+  grunt.registerTask('compile', ['nggettext_compile', 'sass', 'concat', 'uglify', 'cssmin', 'clean']);
 
 };

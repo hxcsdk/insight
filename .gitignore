@@ -48,5 +48,8 @@ README.html
 po/*
 !po/*.po
 
+public/src/css
+.sass-cache
+
 # VSCODE
 .vscode
