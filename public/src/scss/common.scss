@@ -143,49 +143,65 @@ thead {
 
 .navbar { 
   min-height: 80px; 
-}
-
-.navbar-default {
-  background-color: #000000;
-  margin: 0;
-  border: 0;
-  .navbar-toggle { 
-    border-color: #fff;
-    margin-top: 15px;
-    &:hover, &:focus {
-      background-color: red;
-    }
-    .icon-bar { 
-      background-color: #fff; 
-    }
-  }
-  .navbar-nav {
-    &>li>a {
-      color: #F4FBE8;
-      font-family: 'Source Sans Pro', sans-serif;
-      padding-left: 20px;
-      padding-right: 20px;
-      font-size: 19px;
-      &:hover {
-        background-color: #fff;
+  &-default {
+    background-color: #000;
+    margin: 0;
+    border: 0;
+    padding-right: 60px;
+    .navbar-toggle { 
+      border-color: #fff;
+      margin-top: 15px;
+      &:hover, &:focus {
+        background-color: #333;
+      }
+      .icon-bar { 
+        background-color: #fff; 
       }
     }
-    &>.active {
-      &>a {
-        background-color: #43a2ca;
-        color: #fff;
+    .navbar-nav {
+      margin-left: 40px;
+      margin-right: 60px;
+      &>li>a {
+        color: #F4FBE8;
+        font-family: 'Source Sans Pro', sans-serif;
+        padding: 30px 30px;
+        font-size: 19px;
         &:hover {
           background-color: #fff;
         }
-        &:focus {
+      }
+      &>.active {
+        &>a {
           background-color: #43a2ca;
           color: #fff;
+          &:hover {
+            background-color: #fff;
+          }
+          &:focus {
+            background-color: #43a2ca;
+            color: #fff;
+          }
         }
+      }
+    }
+    .status {
+      padding: 7px 15px;
+      margin-top: 24px;
+      background: #181818;
+      color: #CECED2;
+      height: 33px;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      .glyphicon-ok {
+        color: #41bf53;
+      }
+      .tooltip {
+        margin: 0;
       }
     }
   }
 }
-
 
 .navbar-form {
   margin-top: 15px;
@@ -196,16 +212,17 @@ thead {
 
 .navbar-brand-list {
   list-style: none;
+  padding-left: 20px;
   .navbar-brand {
-    padding: 20px 20px 0 54px;
+    padding: 14px 20px 0 0;
     margin-left: 0 !important;
     height: 0;
     line-height: 0;
     .svg-logo {
-      height: 40px;
-      width: 40px;
-      background-image: url('/img/hx-logo.svg');
-      background-size: 40px;
+      height: 75px;
+      width: 75px;
+      background-image: url(/img/hx-logo.svg);
+      background-size: 75px;
       background-repeat: no-repeat;
       display: inline-block;
     }
@@ -340,10 +357,6 @@ thead {
   margin-top: 5px;
   display: inline-block;
 }
-.navbar-nav>li>a {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
 
 #search.loading {
   background-image: url('/img/loading.gif');
@@ -380,25 +393,6 @@ thead {
 
 #search-form .glyphicon.glyphicon-search {
   color: #CECED2;
-}
-
-.status {
-    padding: 7px 15px;
-    margin-top: 24px;
-    background: #181818;
-    color: #CECED2;
-    height: 33px;
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-}
-
-.status .glyphicon-ok {
-  color: #41bf53;
-}
-
-.status .tooltip {
-  margin: 0;
 }
 
 .col-gray {
