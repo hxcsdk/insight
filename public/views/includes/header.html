@@ -1,4 +1,4 @@
-<div class="container">
+<div>
   <div data-ng-controller="HeaderController">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" data-ng-click="$root.isCollapsed = !$root.isCollapsed">
@@ -36,11 +36,13 @@
               </span>
               <span class="glyphicon glyphicon-ok" tooltip="Historic sync finished" tooltip-placement="bottom" data-ng-show="sync.status==='finished'"> </span>
             </div>
-            &nbsp; &middot;
+            &nbsp; 
+            <!-- &middot; -->
             <span data-ng-init="getStatus('Info')">
-              <strong>{{'Conn'|translate}}</strong> {{info.connections}}
-            </span> &middot;
-            <strong>{{'Height'|translate}}</strong> {{totalBlocks || info.blocks}}
+              {{info.connections}} <strong>{{'Connections'|translate}}</strong> 
+            </span> 
+            <!-- &middot; -->
+            <!-- <strong>{{'Height'|translate}}</strong> {{totalBlocks || info.blocks}} -->
           </div>
         </li>
         <!--

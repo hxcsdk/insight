@@ -1,7 +1,7 @@
 <div data-ng-include src="'/views/includes/connection.html'"></div>
 <section data-ng-controller="BlocksController" data-ng-init="findOne()">
   <div class="secondary_navbar hidden-xs hidden-sm" scroll data-ng-class="{'hidden': !secondaryNavbar}" data-ng-show="block.hash" data-ng-init="hideSNavbar=0">
-    <div class="container" data-ng-if="!hideSNavbar">
+    <div data-ng-if="!hideSNavbar">
       <div class="row">
         <div class="col-md-1">
           <a href="/block/{{block.previousblockhash}}"><span class="lead glyphicon glyphicon-chevron-left"></span></a>
