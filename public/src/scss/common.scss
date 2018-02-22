@@ -1,5 +1,8 @@
+@import "theme";
+
 /* Sticky footer styles
 -------------------------------------------------- */
+
 @charset "UTF-8";
 @font-face {
   font-family: 'Inconsolata';
@@ -48,9 +51,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   display: none !important;
 }
 
+a {
+  color: $link-blue;
+  &:hover {
+    color: $link-blue-hover;
+  }
+}
+
 /* Styling for the ngProgress itself */
 #ngProgress {
-  background-color: #43a2ca !important;
+  background-color: $link-blue !important;
   box-shadow: none !important;
   color: #333333 !important;
   height: 3px !important;
@@ -159,27 +169,32 @@ thead {
       }
     }
     .navbar-nav {
+      font-weight: 600;
       margin-left: 40px;
       margin-right: 60px;
       &>li>a {
         color: #F4FBE8;
         font-family: 'Source Sans Pro', sans-serif;
         padding: 30px 30px;
-        font-size: 19px;
+        &.nav-buttons {
+          font-size: 26px;                
+        }
         &:hover {
-          background-color: #fff;
+          background-color: $link-blue;
+          color: $white
         }
       }
       &>.active {
         &>a {
-          background-color: #43a2ca;
-          color: #fff;
+          background-color: $background;
+          color: $link-blue;                
           &:hover {
-            background-color: #fff;
+            background-color: $background;
+            color: $link-blue;                
           }
           &:focus {
-            background-color: #43a2ca;
-            color: #fff;
+            background-color: $background;
+            color: $link-blue;      
           }
         }
       }
@@ -187,7 +202,6 @@ thead {
     .status {
       padding: 7px 15px;
       margin-top: 24px;
-      background: #181818;
       color: #CECED2;
       height: 33px;
       border-radius: 5px;
@@ -844,7 +858,6 @@ thead {
 #powered a {
   background-repeat: no-repeat;
   background-position: center center;
-  display: inline-block;
   float: left;
   height: 45px;
 }
@@ -888,9 +901,6 @@ thead {
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-}
-
-.transaction-vin-vout {
 }
 
 .v_highlight {
