@@ -44,8 +44,9 @@ body {
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   &.mt-0 {
     margin-top: 0;
+    margin-bottom: 25px;
   }
-  color: #132f4b;
+  color: #000;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
@@ -176,7 +177,7 @@ thead {
       margin-left: 40px;
       margin-right: 60px;
       &>li>a {
-        color: #F4FBE8;
+        color: #FFF;
         font-family: 'Lato', sans-serif;
         padding: 30px 30px;
         &.nav-buttons {
@@ -282,12 +283,21 @@ thead {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 28px 42px;
-  margin: 25px;
+  margin: 30px 0 0 0;
 }
 
 .block-dp {
-
+  margin: 0 30px;
+  .dp-arrow {
+    padding: 0 25px;
+  }
+  .datepicker-text {
+    color: $link-blue;
+    font-weight: 900;
+    vertical-align: 2px;
+  }
 }
+
 .layout .col-md-12 {
   background-color: #fff;
 }
@@ -587,11 +597,6 @@ thead {
   color: #333;
   font-size: 14px;
   font-weight: normal;
-}
-
-.datepicker-text {
-  color: $link-blue;
-  font-weight: 900;
 }
 
   .previous-date {

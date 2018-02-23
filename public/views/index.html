@@ -44,11 +44,11 @@
           <thead>
             <tr>
               <th class="wider">Hash</th>
-              <th class="text-right" translate>Value Out</th>
+              <th class="text-right" style="width: 100%" translate>Value Out</th>
             </tr>
           </thead>
           <tbody>
-            <tr data-ng-show="!txs.length"><td colspan="3" translate>Waiting for transactions...</td></tr>
+            <tr data-ng-show="!txs.length"><td colspan="6" translate>Waiting for transactions...</td></tr>
             <tr class="fader" data-ng-repeat='tx in txs'>
               <td>
                 <a class="ellipsis" href="/tx/{{tx.txid}}">{{tx.txid}}</a>

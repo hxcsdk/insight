@@ -5,17 +5,17 @@
     <div class="layout col-xs-15 col-md-12 m-container p-4">
       <div class="page-header">
         <h1 class="mt-0">
-          <span translate>Blocks by date</span>
+          <span translate>Blocks by Date</span>
           <small>
-              <span>
-                  <span class="block-dp">
+              <span class="block-dp">
+                  <span class="dp-arrow">
                     <a class="glyphicon glyphicon-circle-arrow-left" href="/blocks-date/{{pagination.prev}}"></a>
                   </span>
                   <span datepicker-popup show-button-bar="false" data-ng-click="openCalendar($event)" data-ng-model="dt" is-open="opened" data-ng-required="true" class="datepicker-text">
                     {{pagination.current}}
                   </span>
                   
-                  <span>
+                  <span class="dp-arrow">
                     <a class="glyphicon glyphicon-circle-arrow-right" href="/blocks-date/{{pagination.next}}"></a>
                   </span>
                 </span>
