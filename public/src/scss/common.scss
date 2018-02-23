@@ -1,45 +1,52 @@
+@import "theme";
+
 /* Sticky footer styles
 -------------------------------------------------- */
+
 @charset "UTF-8";
 @font-face {
-  font-family: 'Inconsolata';
+  font-family: 'Lato';
   font-style: normal;
-  font-weight: 700;
-  src: url('/fonts/inconsolata-v15-latin_vietnamese_latin-ext-700.woff'); /* IE9 Compat Modes */
-  src: local('Inconsolata-Bold'), 
-       url('/fonts/inconsolata-v15-latin_vietnamese_latin-ext-700.woff') format('woff2'), /* Super Modern Browsers */
-       url('/fonts/inconsolata-v15-latin_vietnamese_latin-ext-700.woff2') format('woff'), /* Modern Browsers */
+  font-weight: 600;
+  src: url('/fonts/Lato-Semibold.woff'); /* IE9 Compat Modes */
+  src: local('Lato-Semibold'), 
+       url('/fonts/Lato-Semibold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/Lato-Semibold.woff') format('woff'), /* Modern Browsers */
 }
 @font-face {
-  font-family: 'Inconsolata';
+  font-family: 'Lato';
   font-style: normal;
-  font-weight: 300;
-  src: url('/fonts/inconsolata-v15-latin_vietnamese_latin-ext-regular.woff'); /* IE9 Compat Modes */
-  src: local('Inconsolata'), 
-       url('/fonts/inconsolata-v15-latin_vietnamese_latin-ext-regular.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/fonts/inconsolata-v15-latin_vietnamese_latin-ext-regular.woff') format('woff'), /* Modern Browsers */
+  font-weight: 400;
+  src: url('/fonts/Lato-Regular.woff'); /* IE9 Compat Modes */
+  src: local('Lato-Regular'), 
+       url('/fonts/Lato-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/Lato-Regular.woff') format('woff'), /* Modern Browsers */
 }
-@font-face {
-  font-family: 'Source Sans Pro';
-  font-style: normal;
-  font-weight: 300;
-  src: url('/fonts/source-sans-pro-v9-latin_vietnamese_latin-ext-300.woff'); /* IE9 Compat Modes */
-  src: local('Source Sans Pro'), 
-       url('/fonts/source-sans-pro-v9-latin_vietnamese_latin-ext-300.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/fonts/source-sans-pro-v9-latin_vietnamese_latin-ext-300.woff') format('woff'), /* Modern Browsers */
-}
+// @font-face {
+//   font-family: 'Lato';
+//   font-style: normal;
+//   font-weight: 300;
+//   src: url('/fonts/source-sans-pro-v9-latin_vietnamese_latin-ext-300.woff'); /* IE9 Compat Modes */
+//   src: local('Lato'), 
+//        url('/fonts/source-sans-pro-v9-latin_vietnamese_latin-ext-300.woff2') format('woff2'), /* Super Modern Browsers */
+//        url('/fonts/source-sans-pro-v9-latin_vietnamese_latin-ext-300.woff') format('woff'), /* Modern Browsers */
+// }
 
 
 html,
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Lato', sans-serif;
   height: 100%;
   background-color: #F8F8F8;
   /* The html and body elements cannot have any padding or margin. */
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  color: #132f4b;
+  &.mt-0 {
+    margin-top: 0;
+    margin-bottom: 25px;
+  }
+  color: #000;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
@@ -48,9 +55,16 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   display: none !important;
 }
 
+a {
+  color: $link-blue;
+  &:hover {
+    color: $link-blue-hover;
+  }
+}
+
 /* Styling for the ngProgress itself */
 #ngProgress {
-  background-color: #43a2ca !important;
+  background-color: $link-blue !important;
   box-shadow: none !important;
   color: #333333 !important;
   height: 3px !important;
@@ -133,7 +147,7 @@ thead {
   background-color: #F8F8F8;
 }
 .table {
-  font-family: 'Inconsolata', monospace;
+  font-family: 'Lato', monospace;
 }
 .table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
   background-color: #ededed;
@@ -159,35 +173,40 @@ thead {
       }
     }
     .navbar-nav {
+      font-weight: 600;
       margin-left: 40px;
       margin-right: 60px;
       &>li>a {
-        color: #F4FBE8;
-        font-family: 'Source Sans Pro', sans-serif;
+        color: #FFF;
+        font-family: 'Lato', sans-serif;
         padding: 30px 30px;
-        font-size: 19px;
+        &.nav-buttons {
+          font-size: 26px;                
+        }
         &:hover {
-          background-color: #fff;
+          background-color: $link-blue;
+          color: $white
         }
       }
       &>.active {
         &>a {
-          background-color: #43a2ca;
-          color: #fff;
+          background-color: $background;
+          color: $link-blue;                
           &:hover {
-            background-color: #fff;
+            background-color: $background;
+            color: $link-blue;                
           }
           &:focus {
-            background-color: #43a2ca;
-            color: #fff;
+            background-color: $background;
+            color: $link-blue;      
           }
         }
       }
     }
     .status {
       padding: 7px 15px;
+      background-color: #181818;
       margin-top: 24px;
-      background: #181818;
       color: #CECED2;
       height: 33px;
       border-radius: 5px;
@@ -262,8 +281,20 @@ thead {
 
 .m-container {
   background-color: #ffffff;
-  margin: 30px 0 0 0;
-  border-radius: 10px
+  border-radius: 10px;
+  padding: 28px 42px;
+  margin: 30px 0 0;
+}
+
+.block-dp {
+  margin: 0 30px;
+  .dp-arrow {
+    padding: 0 25px;
+  }
+  .datepicker-text {
+    color: $link-blue;
+    font-weight: 900;
+  }
 }
 
 .layout .col-md-12 {
@@ -330,7 +361,7 @@ thead {
   padding-top: 30px;
 }
 .insight {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 60px;
   font-style: italic;
   font-weight: 700;
@@ -380,14 +411,14 @@ thead {
 
 #search::-webkit-input-placeholder {
   color: #CECED2;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-style: italic;
   font-weight: 100;
 }
 
 #search::-moz-placeholder {
   color: #CECED2;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 100;
 }
 
@@ -395,26 +426,26 @@ thead {
   color: #CECED2;
 }
 
-.col-gray {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  background-color: #F4F4F4;
-  border-radius: 5px;
-  padding: 14px;
-  border: 1px solid #eee;
-}
+// .col-gray {
+//   -moz-border-radius: 5px;
+//   -webkit-border-radius: 5px;
+//   background-color: #F4F4F4;
+//   border-radius: 5px;
+//   padding: 14px;
+//   border: 1px solid #eee;
+// }
 
-.col-gray-responsive {
-  width: auto;
-}
+// .col-gray-responsive {
+//   width: auto;
+// }
 
-.col-gray-fixed {
-  margin-top: 15px;
-  position: fixed;
-  width: 250px;
-  border: 1px solid #eee;
-  z-index: 1;
-}
+// .col-gray-fixed {
+//   margin-top: 15px;
+//   position: fixed;
+//   width: 250px;
+//   border: 1px solid #eee;
+//   z-index: 1;
+// }
 
 .ellipsis {
   display: block;
@@ -440,29 +471,27 @@ thead {
   width: 165px;
   color: #fff;
   text-align: center;
+  span {
+    font-size: 40px;
+    margin: 30px 0;
+  }
+  h2 {
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 30px;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
 }
 
-.block-id span {
-  font-size: 40px;
-  margin: 30px 0;
-}
-
-.block-id h2 {
-  color: #FFFFFF;
-  font-weight: bold;
-  line-height: 30px;
-  font-size: 24px;
-  margin-top: 0;
-  margin-bottom: 10px;
-}
 .icon-block {
   color: #FFFFFF;
   font-size: 35px;
   margin-top:  10px;
-}
-
-.icon-block h3 {
-  color: #fff;
+  h3 {
+    color: #fff;
+  }
 }
 
 .block-tx {
@@ -566,6 +595,7 @@ thead {
   font-size: 14px;
   font-weight: normal;
 }
+
   .previous-date {
     float: right;
     padding-right: 20%
@@ -612,7 +642,7 @@ thead {
     opacity: 0.9;
   }
   .transactionId {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Lato', monospace;
   }
   .svg-calender {
     height: 25px;
@@ -622,7 +652,11 @@ thead {
     background-repeat: no-repeat;
     display: inline-block;
   }
-.progress-bar-info { background-color: #43A2CA; }
+.progress-bar-info { background-color: $link-blue; }
+.progress {
+  margin-bottom: inherit;
+}
+
 /* Set the fixed height of the footer here */
 #footer {
   background-color: #333333;
@@ -757,15 +791,20 @@ thead {
 .badge-inverse { background-color: #333333; }
 .badge-inverse:hover { background-color: #1a1a1a; }
 
-.status .t {
-  color: white;
+.status-page {
+  margin: 0 20px;
 }
-
-.status .text-danger { background: red; }
-
-.status .text-warning {
-  background: yellow;
-  color: black;
+.status {
+  .t {
+    color: white;
+  }
+  .text-danger { 
+    background: red; 
+  }
+  .text-warning {
+    background: yellow;
+    color: black;
+  }
 }
 
 .btn-copy {
@@ -775,6 +814,19 @@ thead {
   width: 16px;
   outline: none;
   vertical-align: sub;
+  background: transparent url('/img/icons/copy.png') center center no-repeat;
+  .tooltip {
+    display: block;
+    margin-left: 20px;
+    margin-top: -2px;
+    opacity: 0;
+  }
+  &.zeroclipboard-is-hover { 
+    color: #2a6496; 
+  }
+  &.zeroclipboard-is-active .tooltip { 
+    opacity: 1; 
+  }
 }
 
 .btn-copy:hover, .btn-expand:hover {
@@ -783,21 +835,6 @@ thead {
   opacity: 0.9;
 }
 
-.btn-copy {
-  background: transparent url('/img/icons/copy.png') center center no-repeat;
-}
-
-.btn-copy .tooltip {
-  display: block;
-  margin-left: 20px;
-  margin-top: -2px;
-  opacity: 0;
-}
-.btn-copy.zeroclipboard-is-hover { 
-  color: #2a6496; 
-}
-.btn-copy.zeroclipboard-is-active .tooltip { opacity: 1; }
-
 .tx-id {
   background-color: #333333;
   border: 3px solid #FFFFFF;
@@ -805,11 +842,10 @@ thead {
   width: 165px;
   color: #FFFFFF;
   text-align: center;
-}
-
-.tx-id span { 
-  font-size: 40px;
-  margin: 30px 0;
+  span { 
+    font-size: 40px;
+    margin: 30px 0;
+  }
 }
 
 .page-header { margin-top: 0; }
@@ -844,7 +880,6 @@ thead {
 #powered a {
   background-repeat: no-repeat;
   background-position: center center;
-  display: inline-block;
   float: left;
   height: 45px;
 }
@@ -888,9 +923,6 @@ thead {
   -webkit-animation-duration: 2s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-}
-
-.transaction-vin-vout {
 }
 
 .v_highlight {
@@ -981,6 +1013,7 @@ a.v_highlight_more {
   }
   h1 {
     font-size: 26px;
+    margin-top: 0;
   }
   h2 {
     font-size: 22px;
