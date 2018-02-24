@@ -3,7 +3,7 @@
   "private": true,
   "description": "An open-source frontend for the Insight API. The Insight API provides you with a convenient, powerful and simple way to query and broadcast data on the bitcoin network and build your own services with it.",
   "version": "0.2.7D",
-  "repository": "https://github.com/decred/insight",
+  "repository": "https://github.com/hybridnetwork/insight",
   "contributors": [
     {
       "name": "Matias Alejo Garcia",
@@ -27,9 +27,9 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/decred/insight/issues"
+    "url": "https://github.com/hybridnetword/insight/issues"
   },
-  "homepage": "https://github.com/decred/insight",
+  "homepage": "https://github.com/hybridnetwork/insight",
   "license": "MIT",
   "keywords": [
     "insight",
