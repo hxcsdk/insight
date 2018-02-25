@@ -147,6 +147,13 @@ thead {
   background-color: #F8F8F8;
 }
 .table {
+  &.tbl-mt {
+    margin-top: 25px;
+  }
+  .top-row {
+    padding-top: 23px;
+    border-top: none;
+  }
   font-family: 'Lato', monospace;
 }
 .table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
@@ -213,7 +220,7 @@ thead {
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
       .glyphicon-ok {
-        color: #41bf53;
+        color: $success;
       }
       .tooltip {
         margin: 0;
@@ -426,32 +433,12 @@ thead {
   color: #CECED2;
 }
 
-// .col-gray {
-//   -moz-border-radius: 5px;
-//   -webkit-border-radius: 5px;
-//   background-color: #F4F4F4;
-//   border-radius: 5px;
-//   padding: 14px;
-//   border: 1px solid #eee;
-// }
-
-// .col-gray-responsive {
-//   width: auto;
-// }
-
-// .col-gray-fixed {
-//   margin-top: 15px;
-//   position: fixed;
-//   width: 250px;
-//   border: 1px solid #eee;
-//   z-index: 1;
-// }
-
 .ellipsis {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 45%;
 }
 
 .line20 {
@@ -569,7 +556,7 @@ thead {
     font-size: 1.3rem;
   }
   .txvalues-success {
-    background-color: #41bf53;
+    background-color: $success;
   }
   .txvalues-primary {
     background-color: #2970ff;
@@ -595,63 +582,71 @@ thead {
   font-size: 14px;
   font-weight: normal;
 }
+.text-success {
+  color: $success;
+}
+.text-danger {
+  color: $danger;
+}
 
-  .previous-date {
-    float: right;
-    padding-right: 20%
-  }
-  .svg-previous {
-    height: 20px;
-    width: 20px;
-    background-image: url('/img/previous.svg');
-    background-size: 20px;
-    background-repeat: no-repeat;
-    float: left;
-    margin-top: 3px;
-  }
-  .next-date {
-    float: left;
-    padding-left: 20%
-  }
-  .svg-next {
-    height: 20px;
-    width: 20px;
-    background-image: url('/img/next.svg');
-    background-size: 20px;
-    background-repeat: no-repeat;
-    float: right;
-    margin-top: 3px;
-  }
-  .svg-plus {
-    height: 18px;
-    width: 18px;
-    background-image: url('/img/plus.svg');
-    background-size: 18px;
-    background-repeat: no-repeat;
-    display: inline-block;
-  }
-  .svg-minus {
-    height: 18px;
-    width: 18px;
-    background-image: url('/img/arrow.svg');
-    background-size: 18px;
-    background-repeat: no-repeat;
-    display: inline-block;
-  }
-  .svg-plus:hover, .svg-minue:hover {
-    opacity: 0.9;
-  }
-  .transactionId {
-    font-family: 'Lato', monospace;
-  }
-  .svg-calender {
-    height: 25px;
-    width: 25px;
-    background-image: url('/img/calendar.svg');
-    background-size: 25px;
-    background-repeat: no-repeat;
-    display: inline-block;
-  }
+
+.previous-date {
+  float: right;
+  padding-right: 20%
+}
+.svg-previous {
+  height: 20px;
+  width: 20px;
+  background-image: url('/img/previous.svg');
+  background-size: 20px;
+  background-repeat: no-repeat;
+  float: left;
+  margin-top: 3px;
+}
+.next-date {
+  float: left;
+  padding-left: 20%
+}
+.svg-next {
+  height: 20px;
+  width: 20px;
+  background-image: url('/img/next.svg');
+  background-size: 20px;
+  background-repeat: no-repeat;
+  float: right;
+  margin-top: 3px;
+}
+.svg-plus {
+  height: 18px;
+  width: 18px;
+  background-image: url('/img/plus.svg');
+  background-size: 18px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+.svg-minus {
+  height: 18px;
+  width: 18px;
+  background-image: url('/img/arrow.svg');
+  background-size: 18px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+.svg-plus:hover, .svg-minue:hover {
+  opacity: 0.9;
+}
+.transactionId {
+  font-family: 'Lato', monospace;
+}
+.svg-calender {
+  height: 25px;
+  width: 25px;
+  background-image: url('/img/calendar.svg');
+  background-size: 25px;
+  background-repeat: no-repeat;
+  display: inline-block;
+}
+
 .progress-bar-info { background-color: $link-blue; }
 .progress {
   margin-bottom: inherit;
@@ -947,6 +942,8 @@ a.v_highlight_more {
   text-align: center;
   z-index: 1000;
   margin: 0 auto;
+  margin-top: 16px;
+  padding: 10px;
   -moz-box-shadow:    0px 1px 4px 0px rgba(0,0,0,0.20);
   -webkit-box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.20);
   box-shadow:         0px 1px 4px 0px rgba(0,0,0,0.20);
@@ -1087,7 +1084,7 @@ a.v_highlight_more {
     color: #fff;
   }
   .txvalues-success {
-    color: #41bf53;
+    color: $success;
   }
   .txvalues-primary {
     color: #2970ff;
