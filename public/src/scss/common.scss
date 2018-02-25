@@ -1005,7 +1005,9 @@ a.v_highlight_more {
   position: absolute;
   right: 25px;
   padding: 5px 10px;
-  background: #fff;
+  background: $link-blue;
+  color: #fff;
+  cursor: pointer;
   -moz-box-shadow:    0px 2px 3px 0px rgba(0,0,0,0.20);
   -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.20);
   box-shadow:         0px 2px 3px 0px rgba(0,0,0,0.20);

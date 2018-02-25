@@ -10,11 +10,9 @@
         <span class="txvalues txvalues-primary"><strong translate>Final Balance</strong> {{$root.currency.getConvertion(address.balance) || address.balance + ' HX' }}</span>
       </div>
     </div>
-    <div class="hide_snavbar">
-      <a href="#" data-ng-click="hideSNavbar=!hideSNavbar">
-        <span data-ng-show="hideSNavbar"><span class="text-muted glyphicon glyphicon-chevron-down"></span></span>
-        <span data-ng-show="!hideSNavbar"><span class="text-muted glyphicon glyphicon-chevron-up"></span></span>
-      </a>
+    <div class="hide_snavbar" data-ng-click="hideSNavbar=!hideSNavbar">
+      <span data-ng-show="hideSNavbar"><i class="fas fa-chevron-down fa-lg"></i></span>
+      <span data-ng-show="!hideSNavbar"><i class="fas fa-chevron-up fa-lg"></i></span></span>
     </div>
   </div>
   <div class="m-container">
