@@ -82,16 +82,16 @@
           <tr data-ng-show="tx.isCoinBase">
             <td><strong>Coinbase</strong></td>
             <td class="text-muted text-right">
-              <div class="ellipsis">
+              <div class="ellipsis pull-right">
                   <span class="btn-copy ng-isolate-scope" ngclipboard data-clipboard-text={{tx.vin[0].coinbase}}></span>
                   <span class="ng-binding">{{tx.vin[0].coinbase}}</span>
               </div>
             </td>
           </tr>
-    <tr data-ng-show="tx.isStakeGen">
+          <tr data-ng-show="tx.isStakeGen">
             <td><strong>Ticket that was spent</strong></td>
             <td class="text-muted text-right">
-              <div class="ellipsis">
+              <div class="ellipsis pull-right">
                 <a href="/tx/{{tx.ticketid}}">{{tx.ticketid}}</a>
               </div>
             </td>
@@ -99,7 +99,7 @@
           <tr data-ng-show="tx.isStakeRtx">
             <td><strong>Ticket that was revoked</strong></td>
             <td class="text-muted text-right">
-              <div class="ellipsis">
+              <div class="ellipsis pull-right">
                 <a href="/tx/{{tx.ticketid}}">{{tx.ticketid}}</a>
               </div>
             </td>
