@@ -53,7 +53,7 @@
                 {{$root.currency.getConvertion(vin.value) || vin.value + ' HX'}}
               </div>
               <div class="ellipsis">
-                <a class="glyphicon glyphicon-chevron-right" href="/tx/{{vin.txid}}/>/{{vin.vout}}" title="Outpoint: {{vin.txid}},{{vin.vout}}"></a> 
+                <a href="/tx/{{vin.txid}}/>/{{vin.vout}}" title="Outpoint: {{vin.txid}},{{vin.vout}}"></a> 
                   <span data-ng-show="vin.notAddr">{{vin}}</span>
                 <a href="/address/{{vin.addr}}" data-ng-show="!vin.notAddr">{{vin.addr}}</a>
               </div>
@@ -310,7 +310,7 @@
   </div>
 </div>
 
-<div class="well well-sm bgwhite ellipsis" data-ng-if="itemsExpanded && !block.hash && tx.blockhash">
+<div class="ellipsis iib" data-ng-if="itemsExpanded && !block.hash && tx.blockhash">
   <strong translate>Included in Block</strong> <a class="text-muted" href="/block/{{tx.blockhash}}">{{tx.blockhash}}</a>
   <span class="btn-copy" ngclipboard data-clipboard-text={{tx.blockhash}}></span>
 </div>
