@@ -291,6 +291,13 @@ thead {
   border-radius: 10px;
   padding: 28px 42px;
   margin: 30px 0 0;
+  &.tx {
+    padding: 30px;
+  }
+}
+
+.tx-data {
+  margin: 0 30px 0px 20px;
 }
 
 .block-dp {
@@ -471,7 +478,6 @@ thead {
     margin-bottom: 10px;
   }
 }
-
 .icon-block {
   color: #FFFFFF;
   font-size: 35px;
@@ -479,6 +485,22 @@ thead {
   h3 {
     color: #fff;
   }
+}
+
+.indent {
+  margin-left: 15px;
+}
+
+.tx-container {
+  margin-top: 56px;
+}
+
+.tx-row {
+  margin-left: 30px
+}
+
+.exp-col-btn {
+  padding-right: 15px;
 }
 
 .block-tx {
@@ -491,6 +513,7 @@ thead {
   padding: 15px;
   border: 1px solid #eee;
 }
+
 .btn {
   font-size: 1.6rem;
   color: #2970ff;
@@ -554,6 +577,7 @@ thead {
     display: inline-block;
     font-weight: 700;
     font-size: 1.3rem;
+    border-radius: 12px;
   }
   .txvalues-success {
     background-color: $success;
@@ -563,7 +587,8 @@ thead {
   }
   .txvalues-default {
     color: #333333;
-    background-color: #ebebeb;
+    text-align: left;
+    text-transform: none;
   } 
   .txvalues-default.fee {
     width: 217px;
@@ -694,13 +719,20 @@ thead {
 }
 
 .line-bot {
-  border-bottom: 2px solid #EAEAEA;
+  border-bottom: 1px solid #EAEAEA;
   padding: 0 0 10px 0;
+  margin: 0 10px 0 50px;
 }
-.line-mid { padding: 15px;}
+.line-mid { 
+  padding: 50px 15px 15px 50px
+}
 .line-top {
   border-top: 1px solid #EAEAEA;
   padding: 15px 0 0 0;
+  margin: 0 10px 0 50px;
+}
+.bottom-tx-row {
+  padding: 0 15px 15px 35px  
 }
 .date {
     font-size: 3.4rem;
@@ -1079,6 +1111,7 @@ a.v_highlight_more {
     display: inline-block;
     font-weight: 700;
     font-size: 1.3rem;
+    border-collapse: separate;
   }
   .navbar-default .navbar-nav .open .dropdown-menu>li>a {
     color: #fff;
