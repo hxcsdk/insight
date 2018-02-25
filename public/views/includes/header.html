@@ -18,7 +18,7 @@
     <div class="navbar-collapse collapse" collapse="$root.isCollapsed">
       <ul class="nav navbar-nav">
         <li data-ng-repeat="item in menu" ui-route="/{{item.link}}" data-ng-class="{active: $uiRoute}">
-          <a href="/{{item.link}}">{{item.title|translate}}</a>
+          <a class="nav-buttons" href="/{{item.link}}">{{item.title|translate}}</a>
         </li>
       </ul>
       <span class="hidden-xs navbar-form navbar-left" data-ng-include src="'/views/includes/search.html'"></span>
@@ -36,21 +36,12 @@
               </span>
               <span class="glyphicon glyphicon-ok" tooltip="Historic sync finished" tooltip-placement="bottom" data-ng-show="sync.status==='finished'"> </span>
             </div>
-            &nbsp; 
-            <!-- &middot; -->
+            &nbsp;
             <span data-ng-init="getStatus('Info')">
               {{info.connections}} <strong>{{'Connections'|translate}}</strong> 
             </span> 
-            <!-- &middot; -->
-            <!-- <strong>{{'Height'|translate}}</strong> {{totalBlocks || info.blocks}} -->
           </div>
         </li>
-        <!--
-        <li>
-          <a href="#" data-ng-click="openScannerModal()"><span class="glyphicon
-              glyphicon-qrcode"></span> Scan</a>
-        </li>
-        -->
         <li class="dropdown" data-ng-controller="CurrencyController" data-ng-include="'/views/includes/currency.html'"></li>
       </ul>
     </div>

@@ -78,12 +78,12 @@ msgid "Bitcoin comes with a way of signing arbitrary messages."
 msgstr "Bitcoinには任意のメッセージを署名する昨日が備わっています。"
 
 #: public/views/messages_verify.html
-msgid "Decred comes with a way of signing arbitrary messages."
-msgstr "Decredには任意のメッセージを署名する昨日が備わっています。"
+msgid "Hx comes with a way of signing arbitrary messages."
+msgstr "Hxには任意のメッセージを署名する昨日が備わっています。"
 
 #: public/views/status.html
-msgid "Decred node information"
-msgstr "Decredノード情報"
+msgid "Hx node information"
+msgstr "Hxノード情報"
 
 #: public/views/block.html
 msgid "Block"
@@ -438,9 +438,9 @@ msgstr ""
 #: public/views/transaction_sendraw.html
 msgid ""
 "This form can be used to broadcast a raw transaction in hex format over\n"
-"        the Decred network."
+"        the Hx network."
 msgstr ""
-"このフォームでは、16進数フォーマットの生のトランザクションをDecredネットワー"
+"このフォームでは、16進数フォーマットの生のトランザクションをHxネットワー"
 "ク上に配信することができます。"
 
 #: public/views/messages_verify.html
@@ -454,9 +454,9 @@ msgstr ""
 #: public/views/messages_verify.html
 msgid ""
 "This form can be used to verify that a message comes from\n"
-"        a specific Decred address."
+"        a specific Hx address."
 msgstr ""
-"このフォームでは、メッセージが特定のDecredアドレスから来たかどうかを検証する"
+"このフォームでは、メッセージが特定のHxアドレスから来たかどうかを検証する"
 "ことができます。"
 
 #: public/views/status.html

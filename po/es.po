@@ -69,7 +69,7 @@ msgstr "Mejor Bloque"
 
 #: public/views/status.html
 msgid "Bitcoin node information"
-msgstr "Información del nodo Decred"
+msgstr "Información del nodo Hx"
 
 #: public/views/block.html
 msgid "Block"
