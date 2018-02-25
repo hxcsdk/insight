@@ -60,7 +60,7 @@
 
     <div class="col-xs-12 col-md-4">
       <div class="m-container">
-        <h2 class="mt-0" translate>Decred node information</h2>
+        <h2 class="mt-0" translate>Hx node information</h2>
         <table class="table" data-ng-controller="StatusController" data-ng-init="getStatus('Info')">
           <thead  data-ng-include src="'/views/includes/infoStatus.html'"></thead>
           <tbody>
@@ -94,7 +94,7 @@
             </tr>
             <tr data-ng-controller="StatusController" data-ng-init="getStatus('CoinSupply')" >
               <td translate>Available Supply</td>
-              <td class="text-right">{{$root.currency.getConvertion(coinsupply/1e8) || coinsupply + ' DCR'}}</td>
+              <td class="text-right">{{$root.currency.getConvertion(coinsupply/1e8) || coinsupply + ' HX'}}</td>
             </tr>
           </tbody>
         </table>
@@ -109,11 +109,11 @@
             <thead data-ng-include src="'/views/includes/infoStatus.html'"></thead>
             <tbody>
               <tr>
-                <td translate>Last Block Hash (dcrd)</td>
+                <td translate>Last Block Hash (hxd)</td>
                 <td class="text-right ellipsis"><a href="/block/{{lastblockhash}}">{{lastblockhash}}</a></td>
               </tr>
               <tr>
-                <td translate>Current Blockchain Tip (blocks.decred)</td>
+                <td translate>Current Blockchain Tip (blocks.hx)</td>
                 <td class="text-right ellipsis"><a href="/block/{{syncTipHash}}">{{syncTipHash}}</a></td>
               </tr>
             </tbody>
