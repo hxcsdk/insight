@@ -3,7 +3,7 @@
   "private": true,
   "description": "An open-source frontend for the Insight API. The Insight API provides you with a convenient, powerful and simple way to query and broadcast data on the bitcoin network and build your own services with it.",
   "version": "0.2.7D",
-  "repository": "https://github.com/decred/insight",
+  "repository": "https://github.com/hybridnetwork/insight",
   "contributors": [
     {
       "name": "Matias Alejo Garcia",
@@ -27,9 +27,9 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/decred/insight/issues"
+    "url": "https://github.com/hybridnetword/insight/issues"
   },
-  "homepage": "https://github.com/decred/insight",
+  "homepage": "https://github.com/hybridnetwork/insight",
   "license": "MIT",
   "keywords": [
     "insight",
@@ -43,21 +43,23 @@
     "start": "INSIGHT_FORCE_RPC_SYNC=1 INSIGHT_PUBLIC_PATH=public node node_modules/.bin/insight-bitcore-api"
   },
   "dependencies": {
-    "insight-bitcore-api": "decred/insight-api",
+    "insight-bitcore-api": "hybridnetwork/insight-api",
     "wide-align": "1.1.0"
   },
   "devDependencies": {
     "bower": "~1.2.8",
     "grunt": "~0.4.2",
+    "grunt-angular-gettext": "^0.2.15",
     "grunt-cli": "~0.1.11",
-    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-sass": "^0.4.0",
     "grunt-contrib-uglify": "~0.3.2",
     "grunt-contrib-watch": "*",
-    "grunt-macreload": "*",
     "grunt-css": "jcvernaleo/grunt-css",
-    "grunt-markdown": "~0.5.0",
-    "grunt-angular-gettext": "^0.2.15"
+    "grunt-macreload": "*",
+    "grunt-markdown": "~0.5.0"
   },
   "engines": {
     "node": "0.10.40",

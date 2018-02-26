@@ -1,8 +1,11 @@
-<div class="line-bot row" data-ng-hide="!tx">
+<div class="row" data-ng-hide="!tx">
   <div class="col-xs-7 col-md-8">
     <div class="ellipsis">
-      <a class="svg-plus" data-ng-class="{'svg-minus': itemsExpanded}" href="#" title="Show/Hide items details" data-ng-click="itemsExpanded = !itemsExpanded">
-        
+      <a href="#" title="Show/Hide items details" data-ng-click="itemsExpanded = !itemsExpanded" data-ng-class="{'hidden': !itemsExpanded}" class="exp-col-btn">
+        <i class="fas fa-chevron-up fa-lg"></i>
+      </a>
+      <a href="#" title="Show/Hide items details" data-ng-click="itemsExpanded = !itemsExpanded" data-ng-class="{'hidden': itemsExpanded}" class="exp-col-btn">
+        <i class="fas fa-chevron-down fa-lg"></i>
       </a>
       <a class="transactionId" href="/tx/{{tx.txid}}">{{tx.txid}}</a>
       <span class="btn-copy" ngclipboard data-clipboard-text="{{tx.txid}}" ngclipboard-success="onSuccess(e);" ngclipboard-error="onError(e);"></span>
@@ -22,6 +25,9 @@
       <time>{{tx.time * 1000 | date:'medium'}}</time>
     </div>
   </div>
+</div>
+<div class="row">
+  <div class="line-bot"></div>          
 </div>
 <div class="row line-mid" data-ng-if="itemsExpanded">
   <div class="col-md-5">  <!-- tx.vins -->
@@ -43,11 +49,11 @@
               </div>
             </div>
             <div class="panel-body" data-ng-if="!vin.isStakeBase">
-              <div class="pull-right dcr-value">
-                {{$root.currency.getConvertion(vin.value) || vin.value + ' DCR'}}
+              <div class="pull-right hx-value">
+                {{$root.currency.getConvertion(vin.value) || vin.value + ' HX'}}
               </div>
               <div class="ellipsis">
-                <a class="glyphicon glyphicon-chevron-right" href="/tx/{{vin.txid}}/>/{{vin.vout}}" title="Outpoint: {{vin.txid}},{{vin.vout}}"></a> 
+                <a href="/tx/{{vin.txid}}/>/{{vin.vout}}" title="Outpoint: {{vin.txid}},{{vin.vout}}"></a> 
                   <span data-ng-show="vin.notAddr">{{vin}}</span>
                 <a href="/address/{{vin.addr}}" data-ng-show="!vin.notAddr">{{vin.addr}}</a>
               </div>
@@ -97,8 +103,8 @@
         <div data-ng-repeat="vin in tx.vin| startFrom:currentInExpanded*sizeInExpanded | limitTo:sizeInExpanded track by $index" data-ng-if="fromVinCollapsed ? v_index == vin.n : 1">
           <div class="panel panel-default transaction-vin-vout">
             <div class="panel-body">
-              <div class="pull-right dcr-value">
-                {{$root.currency.getConvertion(vin.value) || vin.value + ' DCR'}}
+              <div class="pull-right hx-value">
+                {{$root.currency.getConvertion(vin.value) || vin.value + ' HX'}}
               </div>
               <div class="ellipsis">
                 <a class="glyphicon glyphicon-chevron-right" href="/tx/{{vin.txid}}/>/{{vin.vout}}" title="Outpoint: {{vin.txid}},{{vin.vout}}"></a>
@@ -151,8 +157,8 @@
         <div data-ng-repeat="vin in tx.vin| startFrom:currentInExpanded*sizeInExpanded | limitTo:sizeInExpanded track by $index" data-ng-if="fromVinCollapsed ? v_index == vin.n : 1">
           <div class="panel panel-default transaction-vin-vout">
             <div class="panel-body">
-              <div class="pull-right dcr-value">
-                {{$root.currency.getConvertion(vin.value) || vin.value + ' DCR'}}
+              <div class="pull-right hx-value">
+                {{$root.currency.getConvertion(vin.value) || vin.value + ' HX'}}
               </div>
               <div class="ellipsis">
                 <a class="glyphicon glyphicon-chevron-right" href="/tx/{{vin.txid}}/>/{{vin.vout}}" title="Outpoint: {{vin.txid}},{{vin.vout}}"></a>
@@ -205,8 +211,8 @@
         <div data-ng-repeat="vin in tx.vin| startFrom:currentInExpanded*sizeInExpanded | limitTo:sizeInExpanded track by $index" data-ng-if="fromVinCollapsed ? v_index == vin.n : 1">
           <div class="panel panel-default transaction-vin-vout">
             <div class="panel-body">
-              <div class="pull-right dcr-value">
-                {{$root.currency.getConvertion(vin.value) || vin.value + ' DCR'}}
+              <div class="pull-right hx-value">
+                {{$root.currency.getConvertion(vin.value) || vin.value + ' HX'}}
               </div>
               <div class="ellipsis">
                 <a class="glyphicon glyphicon-chevron-right" href="/tx/{{vin.txid}}/>/{{vin.vout}}" title="Outpoint: {{vin.txid}},{{vin.vout}}"></a>
@@ -267,8 +273,8 @@
         <div data-ng-repeat="vout in tx.vout| startFrom:currentOutExpanded*sizeOutExpanded | limitTo:sizeOutExpanded track by $index" data-ng-if="fromVoutCollapsed ? v_index == vout.n : 1">
           <div class="panel panel-default transaction-vin-vout">
             <div class="panel-body">
-              <div class="pull-right dcr-value" data-ng-if="!vout.notAddr">
-                <span>{{$root.currency.getConvertion(vout.value) || vout.value + ' DCR'}}
+              <div class="pull-right hx-value" data-ng-if="!vout.notAddr">
+                <span>{{$root.currency.getConvertion(vout.value) || vout.value + ' HX'}}
                   <span class="text-success" data-ng-show="!vout.spentTxId" tooltip="Output is unspent" tooltip-placement="left">(U)</span>
                   <a class="glyphicon glyphicon-chevron-right" data-ng-show="vout.spentTxId" href="/tx/{{vout.spentTxId}}/</{{vout.spentIndex}}" title="Spent at: {{vout.spentTxId}},{{vout.spentIndex}}"></a>
                 </span>
@@ -304,25 +310,35 @@
   </div>
 </div>
 
-<div class="well well-sm bgwhite ellipsis" data-ng-if="itemsExpanded && !block.hash && tx.blockhash">
+<div class="ellipsis iib" data-ng-if="itemsExpanded && !block.hash && tx.blockhash">
   <strong translate>Included in Block</strong> <a class="text-muted" href="/block/{{tx.blockhash}}">{{tx.blockhash}}</a>
   <span class="btn-copy" ngclipboard data-clipboard-text={{tx.blockhash}}></span>
 </div>
 
-<div class="line-top row" data-ng-hide="!tx">
+<div class="row">
+  <div class="line-top"></div>          
+</div>
+<div class="row bottom-tx-row" data-ng-hide="!tx">
   <div class="col-xs-12 col-sm-6 col-md-7">
-    <span data-ng-show="!tx.isCoinBase && !tx.isStakeGen && !isNaN(parseFloat(tx.fees))"
-      class="txvalues txvalues-default"><span translate>Fee</span>: {{$root.currency.getConvertion(tx.fees) || tx.fees + 'DCR'}} </span>
+    <!-- <span data-ng-show="!tx.isCoinBase && !tx.isStakeGen && !isNaN(parseFloat(tx.fees))">HX</span>  -->
     <span data-ng-show="tx.size"
-      class="txvalues txvalues-default"><span translate>Size</span>: {{tx.size}} bytes</span>
-    <span data-ng-show="tx.isStakeGen && tx.agendas.length > 0"><span data-ng-repeat="agenda in tx.agendas track by $index" class="txvalues txvalues-default txvalues-agendas">{{agenda}}</span></span>
+      class="txvalues txvalues-default">
+      <span translate>Size</span>: 
+      <span class="text-muted">{{tx.size}} bytes</span>
+    </span>
+    <span data-ng-show="tx.isStakeGen && tx.agendas.length > 0"><span data-ng-repeat="agenda in tx.agendas track by $index" class="txvalues txvalues-default txvalues-agendas">
+        <span class="text-muted">{{agenda | uppercase}}</span>
+      </span>
+    </span>
     <span data-ng-show="!tx.isCoinBase &&  !tx.isStakeGen && !isNaN(parseFloat(tx.fees))"
-      class="txvalues txvalues-default fee"><span translate>Fee Rate</span>:{{$root.currency.getConvertion((tx.fees * 1000) / tx.size) + ' per kB' || ((tx.fees * 1000) / tx.size) + 'DCR per kB'}}</span>
+      class="txvalues txvalues-default fee"><span translate>Fee Rate</span>:
+      <span class="text-muted">{{$root.currency.getConvertion((tx.fees * 1000) / tx.size) + ' per kB' || ((tx.fees * 1000) / tx.size) + 'HX per kB'}}</span>
+    </span>
   </div>
   <div class="col-xs-12 col-sm-6 col-md-5 text-right">
     <span data-ng-show="tx.confirmations" class="txvalues
       txvalues-success">{{tx.confirmations}} <span translate>confirmations</span></span>
     <span data-ng-show="!tx.confirmations" class="txvalues txvalues-danger" translate>Unconfirmed Transaction!</span>
-    <span class="txvalues txvalues-primary">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' DCR' }}</span>
+    <span class="txvalues txvalues-primary">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' HX' }}</span>
   </div>
 </div>

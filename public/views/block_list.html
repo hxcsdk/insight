@@ -2,11 +2,24 @@
 <section data-ng-controller="BlocksController" data-ng-init="list()">
   <div class="container">
   <div class="row">
-    <div class="layout col-xs-15 col-md-7">
+    <div class="layout col-xs-15 col-md-12 m-container p-4">
       <div class="page-header">
-        <h1>
-          <span translate>Blocks</span>
-          <small><span translate>by date.</span> {{detail}} {{before}}</small>
+        <h1 class="mt-0">
+          <span translate>Blocks by Date</span>
+          <small style="vertical-align: 2px">
+              <span class="block-dp">
+                  <span class="dp-arrow">
+                    <a href="/blocks-date/{{pagination.prev}}"><i class="fas fa-arrow-circle-left fa-lg"></i></a>
+                  </span>
+                  <span datepicker-popup show-button-bar="false" data-ng-click="openCalendar($event)" data-ng-model="dt" is-open="opened" data-ng-required="true" class="datepicker-text">
+                    {{pagination.current | date : 'M/d/yy' }}
+                  </span>
+                  
+                  <span class="dp-arrow">
+                    <a href="/blocks-date/{{pagination.next}}"><i class="fas fa-arrow-circle-right fa-lg"></i></a>
+                  </span>
+                </span>
+          </small>
         </h1>
       </div>
       <table class="table table-hover table-striped">
@@ -37,27 +50,6 @@
       <div data-ng-if="pagination.more">
         <a class="blocks btn btn-primary right" href="/blocks-date/{{pagination.current}}" data-ng-show="{{before}}">Latest block from date</a>
         <a class="blocks btn btn-primary left" href="/blocks-date/{{pagination.current}}/{{pagination.moreTs}}">Older blocks from this date</a>
-      </div>
-    </div>
-    <div class="layout col-xs-15 col-md-4 col-md-offset-1">
-			<div class="row" >
-				<div class="col-xs-15 col-md-15  column-full-padding column-blocks-mined-on" id="column-blocks-mined-on">
-						<h1>Blocks mined on:</h1>
-              <p datepicker-popup show-button-bar="false" data-ng-click="openCalendar($event)" data-ng-model="dt" is-open="opened" data-ng-required="true">
-							  <span class="date">{{pagination.current}} <span class="utc">UTC </span></span>
-								<span class="svg-calender"></span>
-              </p>
-							<a class="btn btn-default btn-left" href="/blocks-date/{{pagination.prev}}">
-								<span class="svg-previous"></span>
-								<span class="previous-date">{{pagination.prev}}</span>
-              </a> 
-							<a class="btn btn-default btn-right" href="/blocks-date/{{pagination.next}}">
-								<span class="next-date">{{pagination.next}}</span>
-								<span class="svg-next"></span>
-						</a>
-				</div>
-      <div class="m20v text-center text-muted" data-ng-if="!pagination.current">
-        <span translate>Loading Selected Date...</span>
       </div>
     </div>
   </div>
