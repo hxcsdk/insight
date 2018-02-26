@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('insight.address').factory('Address',
-  function($resource) {
-  return $resource('/api/addr/:addrStr/?noTxList=1', {
+  function($resource, __env) {
+  return $resource(__env.apiUrl + '/api/addr/:addrStr/?noTxList=1', {
     addrStr: '@addStr'
   }, {
     get: {
