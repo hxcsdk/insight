@@ -45,6 +45,12 @@ function($scope, $rootScope, $routeParams, $location, Global, Transaction, Trans
 
       var addr = items[i].addr || (items[i].scriptPubKey && items[i].scriptPubKey.addresses[0]);
 
+      var quantumProtected = false;
+      if(!notAddr && (/^(Hb|Ta|Tb)/.test(addr))) {
+        quantumProtected = true;
+      }
+      items[i].quantumProtected = quantumProtected;
+
       if (!tmp[addr]) {
         tmp[addr] = {};
         tmp[addr].valueSat = 0;
