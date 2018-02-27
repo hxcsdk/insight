@@ -3,7 +3,7 @@
 var defaultLanguage = localStorage.getItem('insight-language') || 'en';
 var defaultCurrency = localStorage.getItem('insight-currency') || 'HX';
 
-angular.module('insight',[
+var ngModule = angular.module('insight',[
   'ngclipboard',
   'ngAnimate',
   'ngResource',
@@ -25,6 +25,15 @@ angular.module('insight',[
   'insight.currency',
   'insight.messages'
 ]);
+
+var env = {};
+
+// Import variables if present (from env.js)
+if(window){  
+  Object.assign(env, window.__env);
+}
+
+ngModule.constant('__env', env);
 
 angular.module('insight.system', []);
 angular.module('insight.socket', []);

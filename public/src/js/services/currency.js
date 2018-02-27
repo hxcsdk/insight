@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('insight.currency').factory('Currency',
-  function($resource) {
-    return $resource('/api/currency');
+  function($resource, __env) {
+    return $resource(__env.apiUrl + '/api/currency');
 });

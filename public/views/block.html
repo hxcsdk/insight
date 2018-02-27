@@ -31,146 +31,140 @@
       </a>
     </div>
   </div>
-  <h1>Block #{{block.height}}</h1>
-  <div class="text-muted" data-ng-if="!block.hash">
-    <span translate>Loading Block Information</span>  <span class="loader-gif"></span>
-  </div>
-  <div data-ng-if="block.hash">
-    <div class="well well-sm ellipsis">
-      <strong>BlockHash</strong> 
-      <span class="txid text-muted">{{block.hash}}</span>
-      <span class="btn-copy" ngclipboard data-clipboard-text={{block.hash}}></span>
+
+  <div class="m-container">
+    <h1 class="mt-0">Block #{{block.height}}</h1>
+    <div class="text-muted" data-ng-if="!block.hash">
+      <span translate>Loading Block Information</span>  <span class="loader-gif"></span>
     </div>
-    <h2 translate>Summary</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <table class="table" style="table-layout: fixed">
-          <thead>
+    <div data-ng-if="block.hash">
+      <div>
+        <strong>BlockHash</strong> 
+        <span class="txid text-muted">{{block.hash}}</span>
+        <span class="btn-copy" ngclipboard data-clipboard-text={{block.hash}}></span>
+      </div>
+      <div>
+        <table class="table tbl-mt">
+          <tbody>
             <tr>
-              <th></th>
-              <th class="wider"></th>
+              <td class="top-row"><strong translate>Number Of Transactions</strong></td>
+              <td class="top-row text-right text-muted">{{block.tx.length}}</td>
             </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td><strong translate>Number Of Transactions</strong></td>
-            <td class="text-right text-muted">{{block.tx.length}}</td>
-          </tr>
-          <tr>
-            <td><strong translate>Height</strong></td>
-            <td class="text-right text-muted">{{block.height}}
-              <span data-ng-show="block.isMainChain" class="text-success">(Mainchain)</span>
-              <span data-ng-show="!block.isMainChain" class="text-danger"> <span class="glyphicon glyphicon-warning-sign"></span> (Orphaned)</span>
-            </td>
-          </tr>
-          <tr>
-            <td><strong translate>Block Reward</strong></td>
-            <td data-ng-show="block.height != 0" class="text-right text-muted">{{$root.currency.getConvertion(block.reward) || block.reward + ' HX'}}</td>
-            <td data-ng-show="block.height == 0" class="text-right text-muted">{{$root.currency.getConvertion(0) || 0 + ' HX'}}</td>
-          </tr> 
-          <tr>
-            <td><strong translate>Timestamp</strong></td>
-            <td class="text-right text-muted">{{block.unixtime}}</td>
-          </tr>
-          <tr data-ng-show="block.poolInfo">
-            <td><strong translate>Mined by</strong></td>
-            <td class="text-right text-muted">
-              <a href="{{block.poolInfo.url}}" target="_blank" title="{{block.poolInfo.poolName}}">{{block.poolInfo.poolName}}</a>
-            </td>
-          </tr>
-	  <tr>
-            <td><strong>Merkle Root</strong></td>
-            <td class="text-right text-muted">
-              <div class="ellipsis">
-                <span class="btn-copy" ngclipboard data-clipboard-text={{block.merkleroot}}></span>
-                <span>{{block.merkleroot}}</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Stake Root</strong></td>
-            <td class="text-right text-muted">
-              <div class="ellipsis">
-                <span class="btn-copy" ngclipboard data-clipboard-text={{block.stakeroot}}></span>
-                <span>{{block.stakeroot}}</span>
-              </div>
-            </td>
-          </tr>
-          <tr data-ng-show="block.height != 0">
-            <td><strong translate>Previous Block</strong></td>
-            <td class="text-right"><a href="/block/{{block.previousblockhash}}">{{block.height-1}}</a></td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="col-md-6">
-        <table class="table">
-          <tbody>
-          <tr>
-            <td> <strong>VoteBits</strong></td>
-            <td class="text-right text-muted">{{block.votebits}}</td>
-          </tr>
-          <tr>
-            <td> <strong translate>Final State</strong></td>
-            <td class="text-right text-muted">{{block.finalstate}}</td>
-          </tr>
-          <tr>
-            <td> <strong>Voters</strong></td>
-            <td class="text-right text-muted">{{block.voters}}</td>
-          </tr>
-          <tr>
-            <td> <strong>FreshStake</strong></td>
-            <td class="text-right text-muted">{{block.freshstake}}</td>
-          </tr>
-          <tr>
-            <td> <strong>Revocations</strong></td>
-            <td class="text-right text-muted">{{block.revocations}}</td>
-          </tr>
-          <tr>
-            <td> <strong>PoolSize</strong></td>
-            <td class="text-right text-muted">{{block.poolsize}}</td>
-          </tr>
-          <tr>
-            <td> <strong translate>Difficulty</strong></td>
-            <td class="text-right text-muted">{{block.difficulty}}</td>
-          </tr>
-          <tr>
-            <td> <strong>SBits</strong></td>
-            <td class="text-right text-muted">{{block.sbits}}</td>
-          </tr>
-          <tr>
-            <td> <strong>Bits</strong></td>
-            <td class="text-right text-muted">{{block.bits}}</td>
-          </tr>
-          <tr>
-            <td> <strong translate>Size (bytes)</strong></td>
-            <td class="text-right text-muted">{{block.size}}</td>
-          </tr>
-          <tr>
-            <td> <strong translate>Version</strong></td>
-            <td class="text-right text-muted">{{block.version}}</td>
-          </tr>
-          <tr>
-            <td><strong>Stake Version</strong></td>
-            <td class="text-right text-muted">{{block.stakeversion}}</td>
-          </tr>
-          <tr>
-            <td> <strong>Nonce</strong></td>
-            <td class="text-right text-muted">{{block.nonce}}</td>
-          </tr>
-          <tr data-ng-show="block.nextblockhash">
-            <td><strong translate>Next Block</strong></td>
-            <td class="text-right"><a href="/block/{{block.nextblockhash}}">{{block.height+1}}</a></td>
-          </tr>
+            <tr>
+              <td><strong translate>Height</strong></td>
+              <td class="text-right text-muted">{{block.height}}
+                <span data-ng-show="block.isMainChain" class="text-success">(Mainchain)</span>
+                <span data-ng-show="!block.isMainChain" class="text-danger"> <span class="glyphicon glyphicon-warning-sign"></span> (Orphaned)</span>
+              </td>
+            </tr>
+            <tr>
+              <td><strong translate>Block Reward</strong></td>
+              <td data-ng-show="block.height != 0" class="text-right text-muted">{{$root.currency.getConvertion(block.reward) || block.reward + ' HX'}}</td>
+              <td data-ng-show="block.height == 0" class="text-right text-muted">{{$root.currency.getConvertion(0) || 0 + ' HX'}}</td>
+            </tr> 
+            <tr>
+              <td><strong translate>Timestamp</strong></td>
+              <td class="text-right text-muted">{{block.unixtime}}</td>
+            </tr>
+            <tr data-ng-show="block.poolInfo">
+              <td><strong translate>Mined by</strong></td>
+              <td class="text-right text-muted">
+                <a href="{{block.poolInfo.url}}" target="_blank" title="{{block.poolInfo.poolName}}">{{block.poolInfo.poolName}}</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Merkle Root</strong></td>
+              <td class="text-muted">
+                <div class="pull-right ellipsis">
+                  <span>{{block.merkleroot}}</span>
+                  <span class="btn-copy" ngclipboard data-clipboard-text={{block.merkleroot}}></span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Stake Root</strong></td>
+              <td class="text-muted">
+                <div class="pull-right ellipsis">
+                  <span class="data">{{block.stakeroot}}</span>
+                  <span class="btn-copy" ngclipboard data-clipboard-text={{block.stakeroot}}></span>
+                </div>
+              </td>
+            </tr>
+            <tr data-ng-show="block.height != 0">
+              <td><strong translate>Previous Block</strong></td>
+              <td class="text-right"><a href="/block/{{block.previousblockhash}}">{{block.height-1}}</a></td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
-  </div>
-  <div data-ng-if="block.hash" data-ng-controller="transactionsController" data-ng-init="load('block')">
-    <h3 translate>Transactions</h3>
-    <div data-ng-include src="'/views/transaction/list.html'" when-scrolled="loadMore()"></div>
   </div>
 
+  <div class="m-container">
+    <table class="table">
+      <tbody>
+      <tr>
+        <td class="top-row"> <strong>VoteBits</strong></td>
+        <td class="top-row text-right text-muted">{{block.votebits}}</td>
+      </tr>
+      <tr>
+        <td> <strong translate>Final State</strong></td>
+        <td class="text-right text-muted">{{block.finalstate}}</td>
+      </tr>
+      <tr>
+        <td> <strong>Voters</strong></td>
+        <td class="text-right text-muted">{{block.voters}}</td>
+      </tr>
+      <tr>
+        <td> <strong>FreshStake</strong></td>
+        <td class="text-right text-muted">{{block.freshstake}}</td>
+      </tr>
+      <tr>
+        <td> <strong>Revocations</strong></td>
+        <td class="text-right text-muted">{{block.revocations}}</td>
+      </tr>
+      <tr>
+        <td> <strong>PoolSize</strong></td>
+        <td class="text-right text-muted">{{block.poolsize}}</td>
+      </tr>
+      <tr>
+        <td> <strong translate>Difficulty</strong></td>
+        <td class="text-right text-muted">{{block.difficulty}}</td>
+      </tr>
+      <tr>
+        <td> <strong>SBits</strong></td>
+        <td class="text-right text-muted">{{block.sbits}}</td>
+      </tr>
+      <tr>
+        <td> <strong>Bits</strong></td>
+        <td class="text-right text-muted">{{block.bits}}</td>
+      </tr>
+      <tr>
+        <td> <strong translate>Size (bytes)</strong></td>
+        <td class="text-right text-muted">{{block.size}}</td>
+      </tr>
+      <tr>
+        <td> <strong translate>Version</strong></td>
+        <td class="text-right text-muted">{{block.version}}</td>
+      </tr>
+      <tr>
+        <td><strong>Stake Version</strong></td>
+        <td class="text-right text-muted">{{block.stakeversion}}</td>
+      </tr>
+      <tr>
+        <td> <strong>Nonce</strong></td>
+        <td class="text-right text-muted">{{block.nonce}}</td>
+      </tr>
+      <tr data-ng-show="block.nextblockhash">
+        <td><strong translate>Next Block</strong></td>
+        <td class="text-right"><a href="/block/{{block.nextblockhash}}">{{block.height+1}}</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div data-ng-if="block.hash" data-ng-controller="transactionsController" data-ng-init="load('block')" class="tx-container">
+    <h3 class="indent" translate>Transactions</h3>
+    <div data-ng-include src="'/views/transaction/list.html'" when-scrolled="loadMore()"></div>
+  </div>
 </section>
 

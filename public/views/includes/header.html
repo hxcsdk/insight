@@ -10,7 +10,8 @@
       <ul class="navbar-brand-list">
         <li class="hidden-xs">
           <a class="navbar-brand brand-link" href="/">
-            <span class="svg-logo"></span>
+            <span ng-if="!onTestnet" class="svg-logo"></span>
+            <span ng-if="onTestnet" class="svg-logo-testnet"></span>
           </a>
         </li>
       </ul>
@@ -27,8 +28,7 @@
           <div class="status" data-ng-controller="StatusController">
             <div data-ng-init="getSync()" class="pull-left">
               <span class="t text-danger"  data-ng-show="sync.error" tooltip="{{sync.error}}" tooltip-placement="bottom"> 
-                  <span  class="glyphicon glyphicon-warning-sign"></span>
-                  ERROR 
+                  <i class="fas fa-times-circle fa-lg"></i>
               </span>
               <span class="t" tooltip="{{sync.syncedBlocks}} / {{sync.blockChainHeight}} synced. {{sync.skippedBlocks || 0}} skipped" tooltip-placement="bottom" data-ng-show="sync.status==='syncing'"> 
                 <span  class="glyphicon glyphicon-refresh icon-rotate"></span>
@@ -37,9 +37,12 @@
               <span class="glyphicon glyphicon-ok" tooltip="Historic sync finished" tooltip-placement="bottom" data-ng-show="sync.status==='finished'"> </span>
             </div>
             &nbsp;
-            <span data-ng-init="getStatus('Info')">
+            <span data-ng-show="info.connections > 0" data-ng-init="getStatus('Info')">
               {{info.connections}} <strong>{{'Connections'|translate}}</strong> 
             </span> 
+            <span data-ng-show="info.connections <= 0" data-ng-init="getStatus('Info')">
+                <strong>{{'No Connections'|translate}}</strong> 
+              </span> 
           </div>
         </li>
         <li class="dropdown" data-ng-controller="CurrencyController" data-ng-include="'/views/includes/currency.html'"></li>
