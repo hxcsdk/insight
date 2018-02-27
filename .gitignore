@@ -53,3 +53,6 @@ public/src/css
 
 # VSCODE
 .vscode
+
+#config
+public/js/config.js
