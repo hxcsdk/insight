@@ -458,6 +458,13 @@ thead {
   width: 45%;
 }
 
+.th-ellipsis {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .line20 {
   border: 1px solid #D4D4D4;
   margin-bottom: 15px;
@@ -564,19 +571,21 @@ thead {
   background-color: #fff;
 }
 
-.btn-default {
-  background-color: #E7E7E7;
+.btn{
+  &-default {
+    background-color: #E7E7E7;
+  }
+  &-success {
+    background-color: #2FA4D7;
+    border: 2px solid #237FA7;
+  }
+  &-danger {
+    background-color: #AC0015;
+    border: 2px solid #6C0000;
+  }
 }
 
-.btn-success {
-  background-color: #2FA4D7;
-  border: 2px solid #237FA7;
-}
 
-.btn-danger {
-  background-color: #AC0015;
-  border: 2px solid #6C0000;
-}
 
 .blocks {
   width: 195px;
@@ -1044,7 +1053,7 @@ a.v_highlight_more {
     padding: 0;
   }
   .m50v {
-    margin: 15px 0;
+    margin: 15px 0; 
   }
   .block-id span {
     font-size: 24px;
