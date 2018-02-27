@@ -458,6 +458,13 @@ thead {
   width: 45%;
 }
 
+.th-ellipsis {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .line20 {
   border: 1px solid #D4D4D4;
   margin-bottom: 15px;
