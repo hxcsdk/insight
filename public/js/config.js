@@ -1,7 +1,9 @@
 //  config options:
 //    apiUrl: sets the url for api calls.  Defaults to the current domain
+//    onTestnet: sets whether or not this explorer is connected to the testnet
 var config = {
-  apiUrl: ''
+  apiUrl: '',
+  onTestnet: true
 };
 
 (function (window) {
