@@ -33,6 +33,9 @@ angular.module('insight.address').controller('AddressController',
         function(address) {
           $rootScope.titleDetail = address.addrStr.substring(0, 7) + '...';
           $rootScope.flashMessage = null;
+          if(/^(Hb|Tb|Ta)/.test(address.addrStr)){
+            address.quantumProtected = true;
+          }
           $scope.address = address;
         },
         function(e) {

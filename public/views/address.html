@@ -24,6 +24,7 @@
     <div data-ng-if="address.addrStr">
       <div class="ellipsis">
         <strong translate>Address</strong> 
+        <span data-ng-show="address.quantumProtected" class="fa fa-lock qp-lock"></span>
         <span class="text-muted">{{address.addrStr}}</span>
         <span class="btn-copy" ngclipboard data-clipboard-text={{address.addrStr}}></span>
       </div>
