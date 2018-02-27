@@ -7,6 +7,6 @@ angular.module('insight.system')
     }
   ])
   .factory('Version',
-    function($resource) {
-      return $resource('/api/version');
+    function($resource, __env) {
+      return $resource(__env.apiUrl + '/api/version');
   });
