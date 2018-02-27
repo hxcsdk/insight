@@ -46,7 +46,15 @@ Check some screenshots and more details at [insight's project homepage](http://i
   with the blockchain state, which may take some time. You can check
   sync progress from within the web interface. More details about that process
   on [insight-api README](https://github.com/bitpay/insight-api/blob/master/README.md). 
-  
+
+## Config
+
+To config API baseUrl or onTestnet overwrite public/js/config.js. 
+
+Config options include:
+
+* apiUrl: url for api if running decoupled, i.e. http://my.insight-api.foo.com
+* onTestnet: whether or not this instance is running on the testnet, defaults to true
   
 ## Nginx Setup
 

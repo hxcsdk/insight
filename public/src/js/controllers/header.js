@@ -1,8 +1,11 @@
 'use strict';
 
 angular.module('insight.system').controller('HeaderController',
-  function($scope, $rootScope, $modal, getSocket, Global, Block) {
+  function($scope, $rootScope, $modal, getSocket, Global, Block, __env) {
     $scope.global = Global;
+
+    console.log("ON TEST NET", __env.onTestnet)
+    $scope.onTestnet = __env.onTestnet || false;
 
     $rootScope.currency = {
       factor: 1,

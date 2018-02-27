@@ -10,7 +10,8 @@
       <ul class="navbar-brand-list">
         <li class="hidden-xs">
           <a class="navbar-brand brand-link" href="/">
-            <span class="svg-logo"></span>
+            <span ng-if="!onTestnet" class="svg-logo"></span>
+            <span ng-if="onTestnet" class="svg-logo-testnet"></span>
           </a>
         </li>
       </ul>
