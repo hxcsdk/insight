@@ -69,9 +69,20 @@ a.quantum-protected {
   }
 }
 
+a.tx-quantum-protected {
+  color: $tx-quantum-protected;
+  &:hover {
+    color: $tx-quantum-protected;
+  }
+}
+
 .qp-lock {
   color: $quantum-protected;
 }
+
+// .tx-qp-lock {
+//   color: 
+// }
 
 /* Styling for the ngProgress itself */
 #ngProgress {

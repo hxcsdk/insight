@@ -21,6 +21,18 @@ angular.module('insight.system').controller('IndexController',
     var _startSocket = function() { 
       socket.emit('subscribe', 'inv');
       socket.on('tx', function(tx) {
+        var quantumProtected = false;
+        if(tx.vout){
+          tx.vout.forEach(function (out) {
+          Object.keys(out).forEach(function (key) {
+            if(/^(Hb|Ta|Tb)/.test(key)){
+              quantumProtected = true;
+            }
+          })
+        })
+        }
+        
+        tx.quantumProtected = quantumProtected;
         $scope.txs.unshift(tx);
         if (parseInt($scope.txs.length, 10) >= parseInt(TRANSACTION_DISPLAYED, 10)) {
           $scope.txs = $scope.txs.splice(0, TRANSACTION_DISPLAYED);
