@@ -83,6 +83,19 @@ function($scope, $rootScope, $routeParams, $location, Global, Transaction, Trans
   var _processTX = function(tx) {
     tx.vinSimple = _aggregateItems(tx.vin);
     tx.voutSimple = _aggregateItems(tx.vout);
+    tx.quantumProtected = false;
+    for(var i = 0; i < tx.vin.length; i++){
+      if(tx.vin[i].quantumProtected) {
+        tx.quantumProtected = true;
+        return;
+      }
+    }
+    for(var i = 0; i < tx.vout.length; i++) {
+      if(tx.vout[i].quantumProtected) {
+        tx.quantumProtected = true;
+        return;
+      }
+    }
   };
 
   var _paginate = function(data) {

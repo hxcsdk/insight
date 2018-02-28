@@ -3,7 +3,7 @@
   <div class="secondary_navbar hidden-xs hidden-sm" scroll data-ng-class="{'hidden': !secondaryNavbar}" data-ng-show="tx.txid" data-ng-init="hideSNavbar=0">
     <div class="container" data-ng-if="!hideSNavbar">
       <div class="col-md-6 col-lg-7 text-left">
-          <h3 translate>Transaction</h3>
+          <h3 translate>{{tx.quantumProtected ? 'Transaction (PQ)' : 'Transaction'}}</h3>
           <div class="ellipsis"> 
             <small>{{tx.txid}}</small> 
             <span class="btn-copy" ngclipboard data-clipboard-text={{tx.txid}}></span>
@@ -28,7 +28,7 @@
   </div>
   <div class="m-container">
     <div data-ng-if="tx.txid">
-      <h1><span translate>Transaction</span> 
+      <h1><span translate>{{tx.quantumProtected ? 'Transaction (PQ)' : 'Transaction'}}</span> 
         <small data-ng-show="from_vin || from_vout">
           <span data-ng-show="from_vin" translate>Input</span> 
           <span data-ng-show="from_vout" translate>Output</span> 
@@ -42,7 +42,7 @@
       </div>
       <div data-ng-if="tx.txid">
         <div class="ellipsis">
-          <strong translate>Transaction</strong> 
+          <strong translate>{{tx.quantumProtected ? 'Transaction (PQ)' : 'Transaction'}}</strong> 
           <span class="txid text-muted">{{tx.txid}}</span>
           <span class="btn-copy" ngclipboard data-clipboard-text={{tx.txid}}></span>
         </div>
