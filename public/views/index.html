@@ -25,7 +25,7 @@
               <td>
                 <a href="/block/{{b.hash}}">{{b.height}}</a>
               </td>
-              <td><span class="ellipsis">{{humanSince(b.time)}}</span></td>
+              <td><span class="th-ellipsis">{{humanSince(b.time)}}</span></td>
               <td class="text-right">{{b.txlength}}</td>
               <td class="text-right hidden-xs">{{b.voters}}</td>
               <td class="text-right hidden-xs">{{b.freshstake}}</td>
@@ -53,7 +53,7 @@
               <td>
                 <a class="ellipsis" href="/tx/{{tx.txid}}">{{tx.txid}}</a>
               </td>
-              <td class="text-right"><span class="ellipsis">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' HX'}}</span></td>
+              <td class="text-right"><span class="th-ellipsis">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' HX'}}</span></td>
             </tr>
           </tbody>
         </table>
