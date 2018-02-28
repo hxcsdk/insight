@@ -51,29 +51,13 @@
             <tr data-ng-show="!txs.length"><td colspan="6" translate>Waiting for transactions...</td></tr>
             <tr class="fader" data-ng-repeat='tx in txs'>
               <td>
-                <a class="ellipsis" href="/tx/{{tx.txid}}">{{tx.txid}}</a>
+                <a class="ellipsis" ng-class="{'tx-quantum-protected': tx.quantumProtected}" href="/tx/{{tx.txid}}"><span data-ng-show="tx.quantumProtected" class="fa fa-lock tx-qp-lock"></span>{{tx.txid}}</a>
               </td>
               <td class="text-right"><span class="th-ellipsis">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' HX'}}</span></td>
             </tr>
           </tbody>
         </table>
       </div>
-      <!-- <div class="layout col-xs-15 col-md-4 col-md-offset-1">
-        <h2 translate>About</h2>
-        <p translate><strong>Powered by insight</strong>, an <a href="https://insight.is/"
-          target="_blank">open-source blockchain explorer</a>. with complete REST and websocket APIs that can be used for writing web wallets and other apps  that need more advanced blockchain queries than provided by hxd RPC.  Check out the <a href="http://github.com/hybridnetwork/insight" target="_blank">source code</a>.</p>
-        <p translate><strong>insight</strong> is still in development, so be sure to report any bugs and provide feedback for improvement at our <a href="https://github.com/hybridnetwork/insight/issues" target="_blank">github issue tracker</a>.</p>
-        <div id="powered" class="row">
-          <div class="powered-text">
-            <small class="text-muted" translate>Powered by</small>
-          </div>
-          <a href="http://bitcore.io" target="_blank" class="bitcore" title="Bitcore"></a>
-          <a href="http://angularjs.org" target="_blank" class="angularjs" title="AngularJS"></a>
-          <a href="https://code.google.com/p/leveldb/" target="_blank" class="leveldb" title="LevelDB"></a>
-          <a href="http://nodejs.org" target="_blank" class="nodejs" title="NodeJs"></a>
-        </div>
-      </div>  -->
-      <!-- END OF COL-3 -->
     </div>
   </div>
 </section>
