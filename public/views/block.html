@@ -40,13 +40,13 @@
     <div data-ng-if="block.hash">
       <div>
         <strong>BlockHash</strong> 
-        <span class="txid text-muted">{{block.hash}}</span>
+        <span class="txid th-ellipsis text-muted">{{block.hash}}</span>
         <span class="btn-copy" ngclipboard data-clipboard-text={{block.hash}}></span>
       </div>
       <div>
         <table class="table tbl-mt">
           <tbody>
-            <tr>
+           <tr>
               <td class="top-row"><strong translate>Number Of Transactions</strong></td>
               <td class="top-row text-right text-muted">{{block.tx.length}}</td>
             </tr>
@@ -75,7 +75,7 @@
             <tr>
               <td><strong>Merkle Root</strong></td>
               <td class="text-muted">
-                <div class="pull-right ellipsis">
+                <div class="pull-right th-ellipsis mobile-tx">
                   <span>{{block.merkleroot}}</span>
                   <span class="btn-copy" ngclipboard data-clipboard-text={{block.merkleroot}}></span>
                 </div>
@@ -84,7 +84,7 @@
             <tr>
               <td><strong>Stake Root</strong></td>
               <td class="text-muted">
-                <div class="pull-right ellipsis">
+                <div class="pull-right th-ellipsis mobile-tx">
                   <span class="data">{{block.stakeroot}}</span>
                   <span class="btn-copy" ngclipboard data-clipboard-text={{block.stakeroot}}></span>
                 </div>
