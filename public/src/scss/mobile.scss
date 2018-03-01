@@ -1,0 +1,152 @@
+@import 'theme';
+
+@media (max-width: 991px) {
+    .status {
+      display: none;
+    } 
+    .navbar-form {
+      width: auto;
+    }
+    .btn-copy {
+      display: none;
+    }
+    .col-gray-fixed {
+      position:static;
+      width: 100%;
+      margin-top: 0;
+      padding: 0;
+    }
+    .m50v {
+      margin: 15px 0; 
+    }
+    .block-id span {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+    .icon-block {
+      font-size: initial;
+      margin: 10px 0;
+    }
+    body {
+      font-size: 12px;
+    }
+    h1 {
+      font-size: 26px;
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 22px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    .insight {
+      font-size: 30px;
+    }
+    .navbar-default .navbar-nav>li>a {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .mobile-tx {
+        width: 200px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .ellipsis {
+        width: auto;
+    }
+    .mobile-tx {
+        width: 200px;
+    }
+    .m-container {
+        padding: 10px;
+    }
+
+    .navbar-form {
+      width: auto;
+    }
+    .status {
+      display: none;
+    } 
+    #wrap>.container {
+      padding: 50px 15px 0;
+    }
+    #ngProgress-container {
+      top: 50px;
+    }
+    body {
+      font-size: 11px;
+    }
+    h1 {
+      font-size: 24px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    .navbar-default {
+        padding-right: 10px;
+        .navbar-brand {
+            padding: 15px;
+        }
+    }
+    .insight {
+      font-size: 26px;
+    }
+    .navbar-nav>li>a {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+    .container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .navbar-default .navbar-toggle {
+      margin-top: 7px;
+    }
+    .navbar {
+      min-height: 52px;
+    }
+    #search { color: #000; }
+    .txvalues {    
+      margin: 26px 10px 0 0;
+      color: #fff;
+      width: 162px;
+      padding: 15px 0;
+      text-align: center;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 1.3rem;
+      border-collapse: separate;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+      color: #fff;
+    }
+    .txvalues-success {
+      color: $success;
+    }
+    .txvalues-primary {
+      color: #2970ff;
+    }
+    .txvalues-default {
+      color: #A09E9E;
+    }
+    .txvalues-danger {
+      color: #AC0015;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .blockAgeTable{
+      width: 140px;
+    }
+    .wider{
+      width: 488px;
+    }
+    .col-gray-fixed {
+      width: 280px;
+    }
+    .navbar-form .form-control {
+      width: 350px;
+    }
+  }

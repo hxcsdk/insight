@@ -70,7 +70,7 @@
           <tr>
             <td><strong translate>Included in Block</strong></td>
             <td data-ng-show="tx.blockhash" class="text-muted text-right"> 
-              <div class="ellipsis pull-right">
+              <div class="ellipsis pull-right mobile-tx">
                 <a href="/block/{{tx.blockhash}}">{{tx.blockhash}}</a>
               </div>
             <td data-ng-show="!tx.blockhash" class="text-muted text-right">Unconfirmed</td>
@@ -91,7 +91,7 @@
           <tr data-ng-show="tx.isStakeGen">
             <td><strong>Ticket that was spent</strong></td>
             <td class="text-muted text-right">
-              <div class="ellipsis pull-right">
+              <div class="ellipsis pull-right mobile-tx">
                 <a href="/tx/{{tx.ticketid}}">{{tx.ticketid}}</a>
               </div>
             </td>

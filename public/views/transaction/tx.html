@@ -7,7 +7,7 @@
       <a href="#" title="Show/Hide items details" data-ng-click="itemsExpanded = !itemsExpanded" data-ng-class="{'hidden': itemsExpanded}" class="exp-col-btn">
         <i class="fas fa-chevron-down fa-lg"></i>
       </a>
-      <a data-ng-class="{'tx-quantum-protected': tx.quantumProtected}" class="transactionId" href="/tx/{{tx.txid}}"><span data-ng-if="tx.quantumProtected" class="fa fa-lock"></span>{{tx.txid}}</a>
+      <a data-ng-class="{'tx-quantum-protected': tx.quantumProtected}" class="transactionId" href="/tx/{{tx.txid}}"><span data-ng-if="tx.quantumProtected" class="qp-purp-lock fa fa-lock"></span>{{tx.txid}}</a>
       <span class="btn-copy" ngclipboard data-clipboard-text="{{tx.txid}}" ngclipboard-success="onSuccess(e);" ngclipboard-error="onError(e);"></span>
       <span data-ng-if="tx.isStakeGen" class="tx-state-spacing txvalues txvalues-default" translate>Vote v{{tx.voterVersion}}</span>
       <span data-ng-if="tx.isStakeRtx" class="tx-state-spacing txvalues txvalues-default" translate>Revocation</span>

@@ -51,7 +51,7 @@
             <tr data-ng-show="!txs.length"><td colspan="6" translate>Waiting for transactions...</td></tr>
             <tr class="fader" data-ng-repeat='tx in txs'>
               <td>
-                <a class="ellipsis" data-ng-class="{'tx-quantum-protected': tx.quantumProtected}" href="/tx/{{tx.txid}}"><span data-ng-if="tx.quantumProtected" class="fa fa-lock tx-qp-lock"></span>{{tx.txid}}</a>
+                <a class="ellipsis" data-ng-class="{'tx-quantum-protected': tx.quantumProtected}" href="/tx/{{tx.txid}}"><span data-ng-if="tx.quantumProtected" class="qp-purp-lock fa fa-lock tx-qp-lock"></span>{{tx.txid}}</a>
               </td>
               <td class="text-right"><span class="th-ellipsis">{{$root.currency.getConvertion(tx.valueOut) || tx.valueOut + ' HX'}}</span></td>
             </tr>
