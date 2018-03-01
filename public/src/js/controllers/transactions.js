@@ -45,6 +45,12 @@ function($scope, $rootScope, $routeParams, $location, Global, Transaction, Trans
 
       var addr = items[i].addr || (items[i].scriptPubKey && items[i].scriptPubKey.addresses[0]);
 
+      var quantumProtected = false;
+      if(!notAddr && (/^(Hb|Ta|Tb)/.test(addr))) {
+        quantumProtected = true;
+      }
+      items[i].quantumProtected = quantumProtected;
+
       if (!tmp[addr]) {
         tmp[addr] = {};
         tmp[addr].valueSat = 0;
@@ -77,6 +83,19 @@ function($scope, $rootScope, $routeParams, $location, Global, Transaction, Trans
   var _processTX = function(tx) {
     tx.vinSimple = _aggregateItems(tx.vin);
     tx.voutSimple = _aggregateItems(tx.vout);
+    tx.quantumProtected = false;
+    for(var i = 0; i < tx.vin.length; i++){
+      if(tx.vin[i].quantumProtected) {
+        tx.quantumProtected = true;
+        return;
+      }
+    }
+    for(var i = 0; i < tx.vout.length; i++) {
+      if(tx.vout[i].quantumProtected) {
+        tx.quantumProtected = true;
+        return;
+      }
+    }
   };
 
   var _paginate = function(data) {
