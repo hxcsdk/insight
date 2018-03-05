@@ -84,6 +84,10 @@ a.tx-quantum-protected {
 //   color: 
 // }
 
+.data-viz {
+  padding-left: 30px;
+  font-size: 18px;
+}
 /* Styling for the ngProgress itself */
 #ngProgress {
   background-color: $link-blue !important;
@@ -929,6 +933,17 @@ thead {
   word-wrap: break-word;
 }
 
+.circle-stats {
+  padding: 0px 60px;
+}
+
+.dv-text-row {
+  margin: 5px 0;
+  padding-right: 35px;
+}
+.dv-title {
+  display: inline-block;
+}
 /* Index */
 #home .btn-more {
   /* border-top: 1px solid #ddd; */

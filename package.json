@@ -43,6 +43,9 @@
     "start": "INSIGHT_FORCE_RPC_SYNC=1 INSIGHT_PUBLIC_PATH=public node node_modules/.bin/insight-bitcore-api"
   },
   "dependencies": {
+    "compass": "^0.1.1",
+    "compass-mixins": "^0.12.10",
+    "css-percentage-circle": "^0.2.0",
     "insight-bitcore-api": "hybridnetwork/insight-api",
     "wide-align": "1.1.0"
   },
@@ -52,6 +55,7 @@
     "grunt-angular-gettext": "^0.2.15",
     "grunt-cli": "~0.1.11",
     "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-compass": "^1.1.1",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-jshint": "~0.8.0",
     "grunt-contrib-sass": "^0.4.0",

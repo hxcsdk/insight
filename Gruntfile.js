@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-markdown');
   grunt.loadNpmTasks('grunt-macreload');
@@ -124,6 +125,21 @@ module.exports = function(grunt) {
         }]
       }
     },
+    compass: {                  // Task
+      dist: {                   // Target
+        options: {              // Target options
+          sassDir: 'public/src/scss',
+          cssDir: 'public/src/css',
+          environment: 'production'
+        }
+      },
+      dev: {                    // Another target
+        options: {
+          sassDir: 'public/src/scss',
+          cssDir: 'public/src/css'
+        }
+      }
+    },
     clean: [
       'public/src/css', 
       'public/css/main.css', 
@@ -131,6 +147,7 @@ module.exports = function(grunt) {
       'public/js/vendors.js',
       'public/js/angularjs-all.js'
     ]
+    
   });
 
   //Making grunt default to force in order not to break the project.
@@ -143,6 +160,6 @@ module.exports = function(grunt) {
   grunt.registerTask('translate', ['nggettext_extract']);
 
   //Compile task (concat + minify)
-  grunt.registerTask('compile', ['nggettext_compile', 'sass', 'concat', 'uglify', 'cssmin', 'clean']);
+  grunt.registerTask('compile', ['nggettext_compile', 'compass', 'sass', 'concat', 'uglify', 'cssmin', 'clean']);
 
 };
