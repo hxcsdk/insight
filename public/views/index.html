@@ -5,12 +5,11 @@
 <section data-ng-controller="IndexController" data-ng-init="index()">
   <div class="container">
     <div id="home" class="row">
-      <div ng-if="loadingStats" class="layout col-xs-15 col-md-12 m-container">
+      <div ng-if="!loadingStats" class="layout col-xs-15 col-md-12 m-container">
         <h1 class="mt-0" translate>Chain State</h1>
         <h4>Loading Stats</h4>
-        {{loadingStats}}
         <div class="progress">
-          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{sync.syncPercentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{sync.syncPercentage}}%">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{sync.syncPercentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{sync.syncPercentage}}%">
             <span class="sr-only">{{sync.syncPercentage}}</span>
           </div>
         </div>
