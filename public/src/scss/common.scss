@@ -935,6 +935,7 @@ thead {
 
 .circle-stats {
   padding: 0px 60px;
+  text-align: center;
 }
 
 .dv-text-row {
@@ -943,6 +944,25 @@ thead {
 }
 .dv-title {
   display: inline-block;
+  text-align: center;
+}
+
+.c100 {
+  margin-left: 38px;
+  background-color: #ececec;
+  &>span{
+    color: #000;
+  }
+  &.standard {
+    .bar, .fill {
+      border-color: #abb4bd;
+    }
+  }
+  &.hx-green {
+    .bar, .fill {
+      border-color: $success;
+    }
+  }
 }
 /* Index */
 #home .btn-more {

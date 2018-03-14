@@ -27,6 +27,10 @@ angular.module('insight').config(function($routeProvider) {
       templateUrl: '/views/block_list.html',
       title: 'Hx Blocks solved Today'
     }).
+    when('/stats', {
+      templateUrl: '/views/statistics.html',
+      title: 'Hx Statistics'
+    }).
     when('/blocks-date/:blockDate/:startTimestamp?', {
       templateUrl: '/views/block_list.html',
       title: 'Hx Blocks solved '

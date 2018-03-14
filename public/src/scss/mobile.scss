@@ -50,6 +50,9 @@
     .mobile-tx {
         width: 200px;
     }
+    .circle-stats {
+      padding: 0px 30px;
+    }
   }
   
   @media (max-width: 767px) {
@@ -133,6 +136,20 @@
     }
     .txvalues-danger {
       color: #AC0015;
+    }
+    .circle-stats {
+      margin: 15px 30px;
+    }
+    .data-viz {
+      margin-bottom: 20px;
+    }
+    .c100 {
+      margin-left: 25%;
+      margin-right: 75%;
+    }
+    .dv-title {
+      display: block;
+      margin-left: -22%;
     }
   }
 
