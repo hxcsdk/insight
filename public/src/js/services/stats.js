@@ -3,7 +3,6 @@
 angular.module('insight.stats')
   .factory('PqStats',
     function($resource, __env) {
-      console.log('things initialize')
     return $resource(__env.apiUrl + '/api/pqstats', 
       { 
 
@@ -12,7 +11,6 @@ angular.module('insight.stats')
         method: 'GET',
         interceptor: {
           response: function (res) {
-            console.log('good');
             return res.data;
           },
           responseError: function (res) {

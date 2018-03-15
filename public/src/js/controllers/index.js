@@ -7,6 +7,9 @@ angular.module('insight.system').controller('IndexController',
   function($scope, Global, getSocket, Blocks, PqStats, Sync) {
     $scope.global = Global;
     $scope.loadingStats = true;
+    $scope.pqStats;
+    $scope.lastDayClass = '';
+    $scope.totalPqClass = '';
 
     var _getSync = function() {
       Sync.get({},
@@ -25,12 +28,23 @@ angular.module('insight.system').controller('IndexController',
       $scope.sync = sync;
       if (sync.syncPercentage === '100.000') {
         _getStats();
-        $scope.loadingStats = false;
       };
     };
     
     var _getStats = function() {
       PqStats.get(function(stat) {
+        $scope.pqStats = stat;
+        $scope.loadingStats = false;
+        if (stat.totalTxCount24h > 0) {
+          $scope.lastDayClass = 'p' + ((stat.pqTxCount24h / stat.totalTxCount24h) * 100).toFixed(0).toString();
+        } else {
+          $scope.lastDayClass = 'p0';
+        }
+        if (stat.totalHx > 0) {
+          $scope.totalPqClass = 'p' + ((stat.pqHx / stat.totalHx) * 100).toFixed(0).toString();
+        } else {
+          $scope.totalPqClass = 'p0';
+        }
       });
     };
 
