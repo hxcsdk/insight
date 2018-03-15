@@ -1,5 +1,21 @@
 <div data-ng-include src="'/views/includes/connection.html'"></div>
 <div data-ng-controller="StatisticsController" data-ng-init="onInit()">
+  <div ng-if="loadingStats.Pq || loadingStats.Mining || loadingStats.Ticket" class="stats-loader">
+    <div class="sk-cube-grid">
+      <div class="sk-cube sk-cube1"></div>
+      <div class="sk-cube sk-cube2"></div>
+      <div class="sk-cube sk-cube3"></div>
+      <div class="sk-cube sk-cube4"></div>
+      <div class="sk-cube sk-cube5"></div>
+      <div class="sk-cube sk-cube6"></div>
+      <div class="sk-cube sk-cube7"></div>
+      <div class="sk-cube sk-cube8"></div>
+      <div class="sk-cube sk-cube9"></div>
+    </div>
+    <div class="loading-text">
+      Loading statistics, please wait...
+    </div>
+  </div>
   <div ng-if="!loadingStats.Pq && !loadingStats.Mining && !loadingStats.Ticket" class="container">
     <div class="layout col-xs-15 col-md-12 m-container">
       <h1 class="mt-0" translate>Chain State</h1>
