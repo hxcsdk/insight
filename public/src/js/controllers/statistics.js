@@ -1,108 +1,71 @@
-// 'use strict';
+'use strict';
 
-// angular.module('insight.statistics').controller('StatisticsController',
-//     function($scope, $rootScope, $routeParams, $location, Global) {
-//     $scope.global = Global;
-//     $scope.loading = false;
-  
-  
-//     $scope.onSuccess = function(e) {
-//         console.info('Action:', e.action);
-//         console.info('Text:', e.text);
-//         console.info('Trigger:', e.trigger);
-  
-//         e.clearSelection();
-//     };
-  
-//     $scope.onError = function(e) {
-//         console.error('Action:', e.action);
-//         console.error('Trigger:', e.trigger);
-//     };
-//     $scope.openCalendar = function($event) {
-//       $event.preventDefault();
-//       $event.stopPropagation();
-  
-//       $scope.opened = true;
-//     };
-  
-  
-//     $scope.list = function() {
-//       $scope.loading = true;
+angular.module('insight.stats').controller('StatisticsController',
+  function($scope, getSocket, PqStats, Sync) {
+    $scope.loadingStats = true;
+    $scope.pqStats;
+    $scope.lastDayClass = '';
+    $scope.totalPqClass = '';
 
-//       if ($routeParams.startTimestamp) {
-//         var d=new Date($routeParams.startTimestamp*1000);
-//         var m=d.getMinutes();
-//         if (m<10) m = '0' + m;
-//         $scope.before = ' before ' + d.getHours() + ':' + m;
-//       }
-  
-//       $rootScope.titleDetail = $scope.detail;
-  
-//       Blocks.get({
-//         blockDate: $routeParams.blockDate,
-//         startTimestamp: $routeParams.startTimestamp
-//       }, function(res) {
-//         $scope.loading = false;
-//         $scope.blocks = res.blocks;
-//         $scope.pagination = res.pagination;
-//       });
-//     };
-  
-//     $scope.params = $routeParams;
-  
-//   });
-  
-// 'use strict';
+    var _getSync = function() {
+      Sync.get({},
+        function(sync) {
+          _onSyncUpdate(sync);
+        },
+        function(e) {
+          var err = 'Could not get sync information' + e.toString();
+          $scope.sync = {
+            error: err
+          };
+        });
+    };
 
-// angular.module('insight.statistics').controller('StatisticsController',
-//     function($scope, $rootScope, $routeParams, $location, Global) {
-//     $scope.global = Global;
-//     $scope.loading = false;
-  
-  
-//     $scope.onSuccess = function(e) {
-//         console.info('Action:', e.action);
-//         console.info('Text:', e.text);
-//         console.info('Trigger:', e.trigger);
-  
-//         e.clearSelection();
-//     };
-  
-//     $scope.onError = function(e) {
-//         console.error('Action:', e.action);
-//         console.error('Trigger:', e.trigger);
-//     };
-//     $scope.openCalendar = function($event) {
-//       $event.preventDefault();
-//       $event.stopPropagation();
-  
-//       $scope.opened = true;
-//     };
-  
-  
-//     $scope.list = function() {
-//       $scope.loading = true;
+    var _onSyncUpdate = function(sync) {
+      $scope.sync = sync;
+      if (sync.syncPercentage === '100.000') {
+        _getStats();
+      };
+    };
+    
+    var _getStats = function() {
+      PqStats.get(function(stat) {
+        $scope.pqStats = stat;
+        $scope.loadingStats = false;
+        if (stat.totalTxCount24h > 0) {
+          $scope.lastDayClass = 'p' + ((stat.pqTxCount24h / stat.totalTxCount24h) * 100).toFixed(0).toString();
+        } else {
+          $scope.lastDayClass = 'p0';
+        }
+        if (stat.totalHx > 0) {
+          $scope.totalPqClass = 'p' + ((stat.pqHx / stat.totalHx) * 100).toFixed(0).toString();
+        } else {
+          $scope.totalPqClass = 'p0';
+        }
+      });
+    };
 
-//       if ($routeParams.startTimestamp) {
-//         var d=new Date($routeParams.startTimestamp*1000);
-//         var m=d.getMinutes();
-//         if (m<10) m = '0' + m;
-//         $scope.before = ' before ' + d.getHours() + ':' + m;
-//       }
-  
-//       $rootScope.titleDetail = $scope.detail;
-  
-//       Blocks.get({
-//         blockDate: $routeParams.blockDate,
-//         startTimestamp: $routeParams.startTimestamp
-//       }, function(res) {
-//         $scope.loading = false;
-//         $scope.blocks = res.blocks;
-//         $scope.pagination = res.pagination;
-//       });
-//     };
-  
-//     $scope.params = $routeParams;
-  
-//   });
-  
+    var socket = getSocket($scope);
+
+    var _startSocket = function() { 
+      socket.emit('subscribe', 'sync');
+      socket.on('status', function(sync) {
+        _onSyncUpdate(sync);
+      });
+    };
+
+    socket.on('connect', function() {
+      _startSocket();
+    });
+
+
+
+    $scope.humanSince = function(time) {
+      var m = moment.unix(time);
+      return m.max().fromNow();
+    };
+
+    $scope.onInit = function() {
+      _startSocket();
+      _getSync();
+    };
+  });
