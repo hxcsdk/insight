@@ -53,8 +53,16 @@
     .circle-stats {
       padding: 0px 30px;
     }
+    .more-info {
+      right: 50%
+    }
   }
-  
+  @media (max-width: 450px) {
+    .more-info {
+      right: 40%;
+    }
+  }
+
   @media (max-width: 767px) {
     .ellipsis {
         width: auto;

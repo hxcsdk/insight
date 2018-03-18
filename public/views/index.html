@@ -21,7 +21,7 @@
           Loading chain state data, please wait...
         </div>
       </div>
-      <div ng-if="!loadingStats" class="layout col-xs-15 col-md-12 m-container">
+      <div class="layout col-xs-15 col-md-12 m-container">
         <h1 class="mt-0" translate>Chain State</h1>
         <div class="row">
           <div class="col-xs-12 col-md-6 data-viz">
@@ -43,9 +43,10 @@
                   <div class="fill"></div>
               </div>
             </div>
-            <div class="dv-title"><strong>Q Chain <br> Dominance</strong></div>            
+            <i data-toggle="tooltip" data-placement="top" title="Percent of Hx stored in a PQ addresses" class="fas fa-info-circle more-info fa-lg"></i>        
+            <div class="dv-title"><strong>Q Chain <br> Dominance</strong></div>          
           </div>
-          <div class="circle-stats col-xs-12 col-md-3">
+          <div class="circle-stats col-xs-12 col-md-3"> 
             <div class="small c100 hx-green" ng-class="lastDayClass">
               <span>{{ (pqStats.pqTxCount24h/pqStats.totalTxCount24h) > 0 ? ((pqStats.pqTxCount24h / pqStats.totalTxCount24h) * 100).toFixed(1) : '0.0' }}%</span>
               <div class="slice">
@@ -53,7 +54,8 @@
                 <div class="fill"></div>
               </div>
             </div>
-            <div class="dv-title"><strong>Last 24<br> Hours</strong></div>              
+            <i data-toggle="tooltip" data-placement="top" title="Percent of Hx transactions that included a PQ address in the last 24 hours" class="fas fa-info-circle more-info fa-lg"></i>                     
+            <div class="dv-title"><strong>Last 24<br> Hours</strong></div>   
           </div>
         </div>
       </div>
