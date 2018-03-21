@@ -29,7 +29,7 @@ angular.module('insight.stats').controller('StatisticsController',
       if (sync.syncPercentage === '100.000') {
         _getPqStats();
         _getMiningStats();
-        _getTicketStats();
+        // _getTicketStats();
       };
     };
     
@@ -59,8 +59,7 @@ angular.module('insight.stats').controller('StatisticsController',
 
     var _getMiningStats = function() {
       MiningStats.get(function(ms) {
-        $scope.mStats = ms.info
-        console.log(ms.info);
+        $scope.mStats = ms;
         $scope.loadingStats.Mining = false;
       });
     };

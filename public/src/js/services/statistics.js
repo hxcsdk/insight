@@ -24,14 +24,14 @@ angular.module('insight.stats')
   })
   .factory('MiningStats',
     function($resource, __env) {
-      return $resource(__env.apiUrl + '/api/status?getMiningInfo', 
+      return $resource(__env.apiUrl + '/api/status?q=getMiningInfo', 
       { 
       }, {
       get: {
         method: 'GET',
         interceptor: {
           response: function (res) {
-            return res.data;
+            return res.data.miningInfo;
           },
           responseError: function (res) {
             if (res.status === 404) {
@@ -45,7 +45,7 @@ angular.module('insight.stats')
   })
   .factory('TicketStats',
     function($resource, __env) {
-      return $resource(__env.apiUrl + '/api/status?getTicketInfo', 
+      return $resource(__env.apiUrl + '/api/status?q=getTicketInfo', 
       { 
       }, {
       get: {
