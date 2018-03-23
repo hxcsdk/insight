@@ -46,6 +46,7 @@
     "compass": "^0.1.1",
     "compass-mixins": "^0.12.10",
     "css-percentage-circle": "^0.2.0",
+    "dygraphs": "^2.1.0",
     "insight-bitcore-api": "hybridnetwork/insight-api",
     "wide-align": "1.1.0"
   },

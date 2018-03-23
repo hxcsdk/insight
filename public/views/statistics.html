@@ -73,19 +73,10 @@
           <div class="row">
             <div class="dv-text-row"><strong>Difficulty</strong> <span class="pull-right">{{ mStats.difficulty }}</span></div>
           </div>
-          <div class="row">
-            <div class="dv-text-row"><strong>Stake Difficulty</strong> <span class="pull-right">{{ mStats.stakedifficulty }}</span></div>
-          </div>
-          <div class="row">
-            <div class="dv-text-row"><strong>Generate</strong> <span class="pull-right">{{ mStats.generate }}</span></div>
-          </div>
         </div>
         <div class="col-xs-12 col-md-6 data-viz">
           <div class="row">
-            <div class="dv-text-row"><strong>Generate Process Limit </strong> <span class="pull-right">{{mStats.genproclimit }}</span></div>
-          </div>
-          <div class="row">
-            <div class="dv-text-row"><strong>Hashes Per Second</strong> <span class="pull-right">{{ mStats.hashespersec }}</span></div>
+            <div class="dv-text-row"><strong>Stake Difficulty</strong> <span class="pull-right">{{ mStats.stakedifficulty }}</span></div>
           </div>
           <div class="row">
             <div class="dv-text-row"><strong>Network Hash Per Second</strong> <span class="pull-right">{{ mStats.networkhashps }}</span></div>
@@ -93,11 +84,13 @@
           <div class="row">
             <div class="dv-text-row"><strong>Pooled Tx</strong> <span class="pull-right">{{ mStats.pooledtx }}</span></div>
           </div>
-          <div class="row">
-            <div class="dv-text-row"><strong>Errors</strong> <span class="pull-right">{{ mStats.errors }}</span></div>
-          </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="layout col-xs-15 col-md-12 m-container">
+      <div id="hash-graph" style="width:auto; height:500px;"></div>
     </div>
   </div>
 </div>
