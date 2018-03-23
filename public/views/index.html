@@ -5,6 +5,60 @@
 <section data-ng-controller="IndexController" data-ng-init="index()">
   <div class="container">
     <div id="home" class="row">
+      <div ng-if="loadingStats" class="layout col-xs-15 col-md-12 m-container stats-loader">
+        <div class="sk-cube-grid index">
+          <div class="sk-cube sk-cube1"></div>
+          <div class="sk-cube sk-cube2"></div>
+          <div class="sk-cube sk-cube3"></div>
+          <div class="sk-cube sk-cube4"></div>
+          <div class="sk-cube sk-cube5"></div>
+          <div class="sk-cube sk-cube6"></div>
+          <div class="sk-cube sk-cube7"></div>
+          <div class="sk-cube sk-cube8"></div>
+          <div class="sk-cube sk-cube9"></div>
+        </div>
+        <div class="loading-text-index">
+          Loading chain state data, please wait...
+        </div>
+      </div>
+      <div class="layout col-xs-15 col-md-12 m-container">
+        <h1 class="mt-0" translate>Chain State</h1>
+        <div class="row">
+          <div class="col-xs-12 col-md-6 data-viz">
+            <div class="row">
+              <div class="dv-text-row"><strong>Total Supply </strong> <span class="pull-right">{{pqStats.totalHx}} Hx</span></div>
+            </div>
+            <div class="row">
+              <div class="dv-text-row"><strong>Quantum Supply Share</strong> <span class="pull-right">{{ pqStats.pqHx }} Hx</span></div>
+            </div>
+            <div class="row">
+              <div class="dv-text-row"><strong>Non-Q Supply Share</strong> <span class="pull-right">{{ pqStats.totalHx - pqStats.pqHx }} Hx</span></div>
+            </div>
+          </div>
+          <div class="circle-stats col-xs-12 col-md-3">
+            <div class="small c100 hx-green" ng-class="totalPqClass">
+              <span>{{ ((pqStats.pqHx / pqStats.totalHx) * 100).toFixed(1) }}%</span>
+              <div class="slice">
+                  <div class="bar"></div>
+                  <div class="fill"></div>
+              </div>
+            </div>
+            <i data-toggle="tooltip" data-placement="top" title="Percent of Hx stored in a PQ addresses" class="fas fa-info-circle more-info fa-lg"></i>        
+            <div class="dv-title"><strong>Q Chain <br> Dominance</strong></div>          
+          </div>
+          <div class="circle-stats col-xs-12 col-md-3"> 
+            <div class="small c100 hx-green" ng-class="lastDayClass">
+              <span>{{ (pqStats.pqTxCount24h/pqStats.totalTxCount24h) > 0 ? ((pqStats.pqTxCount24h / pqStats.totalTxCount24h) * 100).toFixed(1) : '0.0' }}%</span>
+              <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+              </div>
+            </div>
+            <i data-toggle="tooltip" data-placement="top" title="Percent of Hx transactions that included a PQ address in the last 24 hours" class="fas fa-info-circle more-info fa-lg"></i>                     
+            <div class="dv-title"><strong>Last 24<br> Hours</strong></div>   
+          </div>
+        </div>
+      </div>
       <div class="layout col-xs-15 col-md-12 m-container">
         <div id="search-form-mobile" class="visible-xs" data-ng-include src="'/views/includes/search.html'"></div>
         <h1 class="mt-0" translate>Latest Blocks</h1>

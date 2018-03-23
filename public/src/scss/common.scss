@@ -84,6 +84,10 @@ a.tx-quantum-protected {
 //   color: 
 // }
 
+.data-viz {
+  padding-left: 30px;
+  font-size: 18px;
+}
 /* Styling for the ngProgress itself */
 #ngProgress {
   background-color: $link-blue !important;
@@ -323,6 +327,9 @@ thead {
   border-radius: 10px;
   padding: 28px 42px;
   margin: 30px 0 0;
+  &.stats-loader {
+    margin: 0;
+  }
   &.tx {
     padding: 30px;
   }
@@ -341,6 +348,11 @@ thead {
     color: $link-blue;
     font-weight: 900;
   }
+}
+
+.more-info {
+  position: absolute;
+  right: 74px;
 }
 
 .layout .col-md-12 {
@@ -660,6 +672,9 @@ thead {
   color: $danger;
 }
 
+.progress-bar-success {
+  background-color: $success;
+}
 
 .previous-date {
   float: right;
@@ -929,6 +944,37 @@ thead {
   word-wrap: break-word;
 }
 
+.circle-stats {
+  padding: 0px 60px;
+  text-align: center;
+}
+
+.dv-text-row {
+  margin: 5px 0;
+  padding-right: 35px;
+}
+.dv-title {
+  display: inline-block;
+  text-align: center;
+}
+
+.c100 {
+  margin-left: 38px;
+  background-color: #ececec;
+  &>span{
+    color: #000;
+  }
+  &.standard {
+    .bar, .fill {
+      border-color: #abb4bd;
+    }
+  }
+  &.hx-green {
+    .bar, .fill {
+      border-color: $success;
+    }
+  }
+}
 /* Index */
 #home .btn-more {
   /* border-top: 1px solid #ddd; */

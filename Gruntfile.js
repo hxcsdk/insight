@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-markdown');
   grunt.loadNpmTasks('grunt-macreload');
@@ -28,7 +29,7 @@ module.exports = function(grunt) {
         }
       },
       vendors: {
-        src: ['public/src/js/ios-imagefile-megapixel/megapix-image.js', 'public/lib/qrcode-generator/js/qrcode.js', 'public/src/js/jsqrcode/grid.js', 'public/src/js/jsqrcode/version.js', 'public/src/js/jsqrcode/detector.js', 'public/src/js/jsqrcode/formatinf.js', 'public/src/js/jsqrcode/errorlevel.js', 'public/src/js/jsqrcode/bitmat.js', 'public/src/js/jsqrcode/datablock.js', 'public/src/js/jsqrcode/bmparser.js', 'public/src/js/jsqrcode/datamask.js', 'public/src/js/jsqrcode/rsdecoder.js', 'public/src/js/jsqrcode/gf256poly.js', 'public/src/js/jsqrcode/gf256.js', 'public/src/js/jsqrcode/decoder.js', 'public/src/js/jsqrcode/qrcode.js', 'public/src/js/jsqrcode/findpat.js', 'public/src/js/jsqrcode/alignpat.js', 'public/src/js/jsqrcode/databr.js', 'public/lib/momentjs/min/moment.min.js', 'public/lib/moment/lang/es.js'],
+        src: ['public/src/js/ios-imagefile-megapixel/megapix-image.js', 'public/lib/qrcode-generator/js/qrcode.js', 'public/src/js/jsqrcode/grid.js', 'public/src/js/jsqrcode/version.js', 'public/src/js/jsqrcode/detector.js', 'public/src/js/jsqrcode/formatinf.js', 'public/src/js/jsqrcode/errorlevel.js', 'public/src/js/jsqrcode/bitmat.js', 'public/src/js/jsqrcode/datablock.js', 'public/src/js/jsqrcode/bmparser.js', 'public/src/js/jsqrcode/datamask.js', 'public/src/js/jsqrcode/rsdecoder.js', 'public/src/js/jsqrcode/gf256poly.js', 'public/src/js/jsqrcode/gf256.js', 'public/src/js/jsqrcode/decoder.js', 'public/src/js/jsqrcode/qrcode.js', 'public/src/js/jsqrcode/findpat.js', 'public/src/js/jsqrcode/alignpat.js', 'public/src/js/jsqrcode/databr.js', 'public/lib/momentjs/min/moment.min.js', 'public/lib/moment/lang/es.js', 'public/lib/bootstrap/dist/js/bootstrap.min.js'],
         dest: 'public/js/vendors.js'
       },
       angular: {
@@ -124,6 +125,21 @@ module.exports = function(grunt) {
         }]
       }
     },
+    compass: {                  // Task
+      dist: {                   // Target
+        options: {              // Target options
+          sassDir: 'public/src/scss',
+          cssDir: 'public/src/css',
+          environment: 'production'
+        }
+      },
+      dev: {                    // Another target
+        options: {
+          sassDir: 'public/src/scss',
+          cssDir: 'public/src/css'
+        }
+      }
+    },
     clean: [
       'public/src/css', 
       'public/css/main.css', 
@@ -131,6 +147,7 @@ module.exports = function(grunt) {
       'public/js/vendors.js',
       'public/js/angularjs-all.js'
     ]
+    
   });
 
   //Making grunt default to force in order not to break the project.
@@ -143,6 +160,6 @@ module.exports = function(grunt) {
   grunt.registerTask('translate', ['nggettext_extract']);
 
   //Compile task (concat + minify)
-  grunt.registerTask('compile', ['nggettext_compile', 'sass', 'concat', 'uglify', 'cssmin', 'clean']);
+  grunt.registerTask('compile', ['nggettext_compile', 'compass', 'sass', 'concat', 'uglify', 'cssmin', 'clean']);
 
 };
