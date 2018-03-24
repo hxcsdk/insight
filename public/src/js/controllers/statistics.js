@@ -46,6 +46,7 @@ angular.module('insight.stats').controller('StatisticsController',
         }
       ]
     };
+    $scope.unitOfMeasurement = "Mega"
 
     var _getSync = function() {
       Sync.get({},
@@ -71,10 +72,8 @@ angular.module('insight.stats').controller('StatisticsController',
     };
     
     var _getHrGraphStats = function() {
-      transformGraphStats($scope.testGraphData);
       HrGraphStats.get(function(hgs) {
-        $scope.hrgStats = hgs;
-        console.log(hgs);
+        transformGraphStats(hgs);
       });
     };
 
@@ -113,20 +112,48 @@ angular.module('insight.stats').controller('StatisticsController',
     var transformGraphStats = function(stats) {
       $scope.hrGraphData = [];
       stats.networkHashps.forEach(function(el) {
-        $scope.hrGraphData.push([ formatDate(el.timestamp), el.hashperseconds]);
+        $scope.hrGraphData.push([ formatDate(el.timestamp), convertHashesToUnit(el.hashperseconds)]);
       });
-      _generateHrGraph($scope.hrGraphData);
+      _generateHrGraph($scope.hrGraphData, $scope.unitOfMeasurement);
     }
     
     var formatDate = function(dateIn) {
       return new Date(dateIn * 1000);
     }
 
-    var _generateHrGraph = function(gd) {
+    var convertHashesToUnit = function(hashIn) {
+      // var hashOut = hashIn;
+      var loop;
+      // switch ($scope.unitOfMeasurement) {
+      //   case 'Kilo':
+      //     loop = 1;
+      //   case 'Mega':
+      //     loop = 2;
+      //   case 'Giga':
+      //     loop = 3;
+      //   case 'Tera':
+      //     loop = 4;
+      // }
+
+      // var i = 0;
+      // do {
+      //   hashOut = (hashOut / 1000);
+      //   i++;
+      // }
+      // while (i < loop)
+
+      return hashIn / 1000;
+    }
+
+    var _generateHrGraph = function(gd, units) {
       $scope.testGraph = new Dygraph(document.getElementById('hash-graph'), gd, {
-        labels: ["Time", "Hash Per (Unit)"],
+        labels: ["Time", "Hash Per" + $scope.unitOfMeasurement + 'second'],
         fillGraph: true,
-        color: '#007aff'
+        color: '#007aff',
+        xlabel: 'Time Stamp (24hr)',
+        // ylabel: 'Hash Per ' + units + 'second',
+        drawPoints: true,
+        title: 'Hashes Per Kilosecond'
       } );
     };
 
