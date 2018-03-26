@@ -10,7 +10,7 @@ angular.module('insight.stats').controller('StatisticsController',
     }
     $scope.lastDayClass = '';
     $scope.totalPqClass = '';
-    $scope.uom = "Kilo"
+    $scope.uom = "K";
 
     var _getSync = function() {
       Sync.get({},
@@ -27,6 +27,7 @@ angular.module('insight.stats').controller('StatisticsController',
 
     var _onSyncUpdate = function(sync) {
       $scope.sync = sync;
+      
       if (sync.syncPercentage === '100.000') {
         _getPqStats();
         _getMiningStats();
@@ -42,6 +43,7 @@ angular.module('insight.stats').controller('StatisticsController',
       HrGraphStats.get(function(hgs) {
         $scope.hrStats = hgs;
         if ($scope.hrStats.networkHashps.length > 0) {
+          determineUom($scope.$scope.hrStats.networkHashps.pop().hashperseconds);          
           transformGraphStats($scope.hrStats);
         }
       });
@@ -88,6 +90,18 @@ angular.module('insight.stats').controller('StatisticsController',
       _generateHrGraph($scope.hrGraphData, $scope.uom);
     }
     
+    var determineUom = function(hps) {
+      if ((hps / 1000) < 999) {
+        $scope.uom = "K"
+      } else if (((hps / 1000) / 1000) < 999) {
+        $scope.uom = "M"
+      } else if ((((hps / 1000) / 1000) / 1000) < 999) {
+        $scope.uom = "G"      
+      } else {
+        $scope.uom = "T"
+      }
+    }
+
     var formatDate = function(dateIn) {
       return new Date(dateIn * 1000);
     }
@@ -95,33 +109,33 @@ angular.module('insight.stats').controller('StatisticsController',
     var convertHashesToUnit = function(hashIn) {
       var hashOut = hashIn;
       switch ($scope.uom) {
-        case 'Kilo':
+        case 'K':
           loop = 1;
           break;
-        case 'Mega':
+        case 'M':
           loop = 2;
           break;          
-        case 'Giga':
+        case 'G':
           loop = 3;
           break;          
-        case 'Tera':
+        case 'T':
           loop = 4;
           break;          
       }
 
-      // var i = 0;
-      // do {
-      //   hashOut = (hashOut / 1000);
-      //   i++;
-      // }
-      // while (i < loop)
+      var i = 0;
+      do {
+        hashOut = (hashOut / 1000);
+        i++;
+      }
+      while (i < loop)
 
-      return hashOut;;
+      return hashOut;
     }
 
     var _generateHrGraph = function(gd, units) {
       $scope.testGraph = new Dygraph(document.getElementById('hash-graph'), gd, {
-        labels: ["Time", "H/s"],
+        labels: ["Time", $scope.uom + "H/s"],
         fillGraph: true,
         color: '#007aff',
         xlabel: 'Time Stamp (24hr)',
