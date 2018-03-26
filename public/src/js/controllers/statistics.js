@@ -109,25 +109,25 @@ angular.module('insight.stats').controller('StatisticsController',
           break;          
       }
 
-      var i = 0;
-      do {
-        hashOut = (hashOut / 1000);
-        i++;
-      }
-      while (i < loop)
+      // var i = 0;
+      // do {
+      //   hashOut = (hashOut / 1000);
+      //   i++;
+      // }
+      // while (i < loop)
 
       return hashOut;;
     }
 
     var _generateHrGraph = function(gd, units) {
       $scope.testGraph = new Dygraph(document.getElementById('hash-graph'), gd, {
-        labels: ["Time", "Hash Per" + $scope.uom + 'second'],
+        labels: ["Time", "H/s"],
         fillGraph: true,
         color: '#007aff',
         xlabel: 'Time Stamp (24hr)',
         // ylabel: 'Hash Per ' + units + 'second',
         drawPoints: true,
-        title: 'Hashes Per ' + $scope.uom + 'second'
+        title: 'Average Hashrate'
       });
     };
 
