@@ -10,43 +10,7 @@ angular.module('insight.stats').controller('StatisticsController',
     }
     $scope.lastDayClass = '';
     $scope.totalPqClass = '';
-    $scope.testGraphData = {
-      "networkHashps": [
-        {
-            "hashperseconds": 1000,
-            "timestamp": 1521652827
-        },
-        {
-            "hashperseconds": 134758,
-            "timestamp": 1521653172
-        },
-        {
-            "hashperseconds": 133366,
-            "timestamp": 1521653250
-        },
-        {
-            "hashperseconds": 128661,
-            "timestamp": 1521653374
-        },
-        {
-            "hashperseconds": 165785,
-            "timestamp": 1521653414
-        },
-        {
-            "hashperseconds": 149798,
-            "timestamp": 1521653523
-        },
-        {
-            "hashperseconds": 141582,
-            "timestamp": 1521653619
-        },
-        {
-            "hashperseconds": 142908,
-            "timestamp": 1521653622
-        }
-      ]
-    };
-    $scope.unitOfMeasurement = "Mega"
+    $scope.uom = "Kilo"
 
     var _getSync = function() {
       Sync.get({},
@@ -67,13 +31,19 @@ angular.module('insight.stats').controller('StatisticsController',
         _getPqStats();
         _getMiningStats();
         _getHrGraphStats();
+
+        // instantiates a blank graph
+        _generateHrGraph([], $scope.uom);
         // _getTicketStats();
       };
     };
     
     var _getHrGraphStats = function() {
       HrGraphStats.get(function(hgs) {
-        transformGraphStats(hgs);
+        $scope.hrStats = hgs;
+        if ($scope.hrStats.networkHashps.length > 0) {
+          transformGraphStats($scope.hrStats);
+        }
       });
     };
 
@@ -114,7 +84,8 @@ angular.module('insight.stats').controller('StatisticsController',
       stats.networkHashps.forEach(function(el) {
         $scope.hrGraphData.push([ formatDate(el.timestamp), convertHashesToUnit(el.hashperseconds)]);
       });
-      _generateHrGraph($scope.hrGraphData, $scope.unitOfMeasurement);
+      $scope.loadingStats.GraphRendered = true;      
+      _generateHrGraph($scope.hrGraphData, $scope.uom);
     }
     
     var formatDate = function(dateIn) {
@@ -122,39 +93,42 @@ angular.module('insight.stats').controller('StatisticsController',
     }
 
     var convertHashesToUnit = function(hashIn) {
-      // var hashOut = hashIn;
-      var loop;
-      // switch ($scope.unitOfMeasurement) {
-      //   case 'Kilo':
-      //     loop = 1;
-      //   case 'Mega':
-      //     loop = 2;
-      //   case 'Giga':
-      //     loop = 3;
-      //   case 'Tera':
-      //     loop = 4;
-      // }
+      var hashOut = hashIn;
+      switch ($scope.uom) {
+        case 'Kilo':
+          loop = 1;
+          break;
+        case 'Mega':
+          loop = 2;
+          break;          
+        case 'Giga':
+          loop = 3;
+          break;          
+        case 'Tera':
+          loop = 4;
+          break;          
+      }
 
-      // var i = 0;
-      // do {
-      //   hashOut = (hashOut / 1000);
-      //   i++;
-      // }
-      // while (i < loop)
+      var i = 0;
+      do {
+        hashOut = (hashOut / 1000);
+        i++;
+      }
+      while (i < loop)
 
-      return hashIn / 1000;
+      return hashOut;;
     }
 
     var _generateHrGraph = function(gd, units) {
       $scope.testGraph = new Dygraph(document.getElementById('hash-graph'), gd, {
-        labels: ["Time", "Hash Per" + $scope.unitOfMeasurement + 'second'],
+        labels: ["Time", "Hash Per" + $scope.uom + 'second'],
         fillGraph: true,
         color: '#007aff',
         xlabel: 'Time Stamp (24hr)',
         // ylabel: 'Hash Per ' + units + 'second',
         drawPoints: true,
-        title: 'Hashes Per Kilosecond'
-      } );
+        title: 'Hashes Per ' + $scope.uom + 'second'
+      });
     };
 
     var socket = getSocket($scope);
