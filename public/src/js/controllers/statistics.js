@@ -43,7 +43,7 @@ angular.module('insight.stats').controller('StatisticsController',
       HrGraphStats.get(function(hgs) {
         $scope.hrStats = hgs;
         if ($scope.hrStats.networkHashps.length > 0) {
-          determineUom($scope.$scope.hrStats.networkHashps.pop().hashperseconds);          
+          determineUom($scope.hrStats.networkHashps[$scope.hrStats.networkHashps.length - 1].hashperseconds);          
           transformGraphStats($scope.hrStats);
         }
       });
@@ -138,8 +138,8 @@ angular.module('insight.stats').controller('StatisticsController',
         labels: ["Time", $scope.uom + "H/s"],
         fillGraph: true,
         color: '#007aff',
-        xlabel: 'Time Stamp (24hr)',
-        // ylabel: 'Hash Per ' + units + 'second',
+        // xlabel: 'Time Stamp (24hr)',
+        ylabel: $scope.uom + 'H/s',
         drawPoints: true,
         title: 'Average Hashrate'
       });
