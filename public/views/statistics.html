@@ -1,6 +1,7 @@
 <div data-ng-include src="'/views/includes/connection.html'"></div>
 <div data-ng-controller="StatisticsController" data-ng-init="onInit()">
-  <div ng-if="loadingStats.Pq || loadingStats.Mining || loadingStats.Ticket" class="stats-loader">
+  <!-- <div ng-if="loadingStats.Pq || loadingStats.Mining || loadingStats.Ticket" class="stats-loader"> -->
+  <div ng-if="loadingStats.Pq || loadingStats.Mining" class="stats-loader">
     <div class="sk-cube-grid">
       <div class="sk-cube sk-cube1"></div>
       <div class="sk-cube sk-cube2"></div>
@@ -16,13 +17,14 @@
       Loading statistics, please wait...
     </div>
   </div>
-  <div ng-if="!loadingStats.Pq && !loadingStats.Mining && !loadingStats.Ticket" class="container">
+  <!-- <div ng-if="!loadingStats.Pq && !loadingStats.Mining && !loadingStats.Ticket" class="container"> -->
+  <div ng-if="!loadingStats.Pq && !loadingStats.Mining" class="container">
     <div class="layout col-xs-15 col-md-12 m-container">
       <h1 class="mt-0" translate>Chain State</h1>
       <div class="row">
         <div class="col-xs-12 col-md-6 data-viz">
           <div class="row">
-            <div class="dv-text-row"><strong>Total Supply </strong> <span class="pull-right">{{pqStats.totalHx}} Hx</span></div>
+            <div class="dv-text-row"><strong>Circulating Supply </strong> <span class="pull-right">{{pqStats.totalHx}} Hx</span></div>
           </div>
           <div class="row">
             <div class="dv-text-row"><strong>Quantum Supply Share</strong> <span class="pull-right">{{ pqStats.pqHx }} Hx</span></div>
@@ -60,36 +62,41 @@
       <div class="row">
         <div class="col-xs-12 col-md-6 data-viz">
           <div class="row">
-            <div class="dv-text-row"><strong>Version </strong> <span class="pull-right">{{mStats.version }}</span></div>
+            <div class="dv-text-row"><strong>Blocks </strong> <span class="pull-right">{{mStats.blocks }}</span></div>
           </div>
           <div class="row">
-            <div class="dv-text-row"><strong>Protocol Version</strong> <span class="pull-right">{{ mStats.protocolversion }}</span></div>
+            <div class="dv-text-row"><strong>Current Block Size</strong> <span class="pull-right">{{ mStats.currentblocksize }}</span></div>
           </div>
           <div class="row">
-            <div class="dv-text-row"><strong>Blocks</strong> <span class="pull-right">{{ mStats.blocks }}</span></div>
-          </div>
-          <div class="row">
-            <div class="dv-text-row"><strong>Time Offset</strong> <span class="pull-right">{{ mStats.timeoffset }}</span></div>
-          </div>
-          <div class="row">
-            <div class="dv-text-row"><strong>Relay Fee</strong> <span class="pull-right">{{ mStats.relayfee }}</span></div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-md-6 data-viz">
-          <div class="row">
-            <div class="dv-text-row"><strong>Connections </strong> <span class="pull-right">{{mStats.connections }}</span></div>
+            <div class="dv-text-row"><strong>Current Block Tx</strong> <span class="pull-right">{{ mStats.currentblocktx }}</span></div>
           </div>
           <div class="row">
             <div class="dv-text-row"><strong>Difficulty</strong> <span class="pull-right">{{ mStats.difficulty }}</span></div>
           </div>
+        </div>
+        <div class="col-xs-12 col-md-6 data-viz">
           <div class="row">
-            <div class="dv-text-row"><strong>Proxy</strong> <span class="pull-right">{{ mStats.proxy }}</span></div>
+            <div class="dv-text-row"><strong>Stake Difficulty</strong> <span class="pull-right">{{ mStats.stakedifficulty }}</span></div>
           </div>
           <div class="row">
-            <div class="dv-text-row"><strong>Errors</strong> <span class="pull-right">{{ mStats.errors }}</span></div>
+            <div class="dv-text-row"><strong>Network Hash Per Second</strong> <span class="pull-right">{{ mStats.networkhashps }}</span></div>
+          </div>
+          <div class="row">
+            <div class="dv-text-row"><strong>Pooled Tx</strong> <span class="pull-right">{{ mStats.pooledtx }}</span></div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="layout col-xs-15 col-md-12 m-container">
+        <!-- <div class="btn-group mb-2" role="group" aria-label="Unit of Measurement">
+            <button type="button" class="btn btn-default bg">Kilo</button>
+            <button type="button" class="btn btn-default bg">Mega</button>
+            <button type="button" class="btn btn-default bg">Giga</button>
+            <button type="button" class="btn btn-default bg">Tera</button>
+          </div> -->
+      <div id="hash-graph" style="width:auto; height:500px;"></div>
     </div>
   </div>
 </div>

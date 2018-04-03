@@ -619,7 +619,11 @@ thead {
   }
 }
 
-
+.btn.btn-default.bg {
+  width: auto;
+  border-color: rgb(204, 204, 204);
+  box-shadow: none;
+}
 
 .blocks {
   width: 195px;
